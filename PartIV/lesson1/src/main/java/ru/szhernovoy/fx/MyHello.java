@@ -10,6 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MyHello extends Application {
 
@@ -39,6 +40,7 @@ public class MyHello extends Application {
         Scene scene = new Scene(vBox,350,350);
         primaryStage.setScene(scene);
         primaryStage.setTitle("JavaFx my expireince");
+        primaryStage.initStyle(StageStyle.UNIFIED);
         primaryStage.show();
     }
 
