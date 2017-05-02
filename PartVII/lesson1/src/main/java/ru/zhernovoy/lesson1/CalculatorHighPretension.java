@@ -1,7 +1,4 @@
-package ru.zhernovoy.lesson1;/**
- * @author Sergey Zhernovoy
- * create on 12.04.2017.
- */
+package ru.zhernovoy.lesson1;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

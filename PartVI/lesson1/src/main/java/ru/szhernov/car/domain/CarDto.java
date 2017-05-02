@@ -1,5 +1,5 @@
-package ru.szhernov.car.domain;/**
- * @author Sergey Zhernovoy
+package ru.szhernov.car.domain;/*
+  @author Sergey Zhernovoy
  * create on 10.04.2017.
  */
 

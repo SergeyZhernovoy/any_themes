@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 
 import java.util.List;
 
-public class Albom {
-    private static final Logger logger = LoggerFactory.getLogger(Albom.class);
+public class Album {
+    private static final Logger logger = LoggerFactory.getLogger(Album.class);
     private String name;
     private List<Sing> tracks;
     private List<Musician> musicians;
