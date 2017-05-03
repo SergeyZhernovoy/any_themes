@@ -13,4 +13,12 @@ public class Musician {
     private List<Musician> members;
     private String origin;
 
+    public Musician(String name, String origin) {
+        this.name = name;
+        this.origin = origin;
+    }
+
+    public boolean isFrom(String from){
+        return origin.equals(from);
+    }
 }
