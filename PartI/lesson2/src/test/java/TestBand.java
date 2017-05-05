@@ -52,9 +52,6 @@ public class TestBand {
     @Test(timeout = 10000)
     public void testStreamCopy(){
         List<String> copy = testArray.stream().map(string->string.toUpperCase()).collect(Collectors.toList());
-
-        List<String> beginningWithNumbers   = Stream.of("a", "1abc", "abc1").filter(value -> isDigit(value.charAt(0))).collect(toList());
-
     }
 
 
