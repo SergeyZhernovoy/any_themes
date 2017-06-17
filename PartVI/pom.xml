@@ -14,7 +14,7 @@
     <packaging>pom</packaging>
     <version>1.0.1</version>
     <modules>
-        <module>lesson1</module>
+        <module>simpleWeb</module>
     </modules>
 
 
