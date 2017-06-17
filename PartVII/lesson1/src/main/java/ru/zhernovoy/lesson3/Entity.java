@@ -32,8 +32,7 @@ public class Entity {
         }
 
         public Entity build(){
-            Entity entity = new Entity(this);
-            return entity;
+            return new Entity(this);
         }
     }
 
