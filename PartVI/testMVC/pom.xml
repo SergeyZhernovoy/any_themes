@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lesson1</groupId>
-    <artifactId>simpleWeb</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>testMVC</groupId>
+    <artifactId>TestMVC</artifactId>
+    <version>1.0.1</version>
 
 
 </project>
