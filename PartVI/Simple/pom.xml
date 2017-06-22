@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>Angular</artifactId>
+        <artifactId>MVC</artifactId>
         <groupId>PartVI</groupId>
         <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>testMVC</groupId>
-    <artifactId>TestMVC</artifactId>
+    <groupId>Simple</groupId>
+    <artifactId>Simple</artifactId>
     <version>1.0.1</version>
 
 

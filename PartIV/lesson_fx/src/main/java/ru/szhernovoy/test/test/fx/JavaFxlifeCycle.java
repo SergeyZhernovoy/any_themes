@@ -1,4 +1,4 @@
-package ru.szhernovoy.fx;/**
+package ru.szhernovoy.test.test.fx;/**
  * @author Sergey Zhernovoy
  * create on 07.04.2017.
  */

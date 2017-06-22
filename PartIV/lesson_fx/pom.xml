@@ -37,7 +37,7 @@
                         <configuration>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                                    <mainClass>ru.szhernovoy.fx.MyHello</mainClass>
+                                    <mainClass>ru.szhernovoy.test.test.fx.MyHello</mainClass>
                                 </transformer>
                             </transformers>
                         </configuration>

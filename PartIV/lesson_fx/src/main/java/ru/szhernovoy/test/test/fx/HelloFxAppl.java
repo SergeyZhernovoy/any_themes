@@ -1,4 +1,4 @@
-package ru.szhernovoy.fx;/**
+package ru.szhernovoy.test.test.fx;/**
  * Created by Sergey on 05.04.2017.
  */
 

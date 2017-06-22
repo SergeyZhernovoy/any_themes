@@ -1,7 +1,7 @@
 /**
  * Created by Sergey on 06.04.2017.
  */
-package ru.szhernovoy.fx;
+package ru.szhernovoy.test.test.fx;
 
 /**
 
