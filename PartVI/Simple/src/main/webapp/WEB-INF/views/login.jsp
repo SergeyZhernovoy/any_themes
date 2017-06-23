@@ -19,6 +19,6 @@
           <input name="password" title="Password" id="password">
           <input type="submit">
       </s:form>
-       <h1>:${error}</h1>
+       <h1>${error}</h1>
 </body>
 </html>
