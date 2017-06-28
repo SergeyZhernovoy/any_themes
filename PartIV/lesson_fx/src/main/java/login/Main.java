@@ -1,4 +1,4 @@
-package ru.szhernovoy.test.test.login;/**
+package login;/**
  * Created by Admin on 29.04.2017.
  */
 
