@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.lesson2;/**
+package ru.szhernovoy.learning.annotation.from_video;/**
  * @author Sergey Zhernovoy
  * create on 04.07.2017.
  */

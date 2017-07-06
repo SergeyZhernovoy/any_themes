@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.lesson1;
+package ru.szhernovoy.learning.annotation.simple_example;
 
 import java.util.ArrayList;
 import java.util.List;
