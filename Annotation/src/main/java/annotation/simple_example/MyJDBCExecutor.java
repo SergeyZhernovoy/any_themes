@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.simple_example;
+package annotation.simple_example;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.simple_example;
+package annotation.simple_example;
 
 /**
  * Created by Sergey on 02.07.2017.

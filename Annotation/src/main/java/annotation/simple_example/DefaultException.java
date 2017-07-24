@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.use_class;/**
+package annotation.simple_example;/**
  * @author Sergey Zhernovoy
  * create on 06.07.2017.
  */

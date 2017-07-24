@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.from_video;
+package annotation.simple_example;
 
 /**
  * @author Sergey Zhernovoy

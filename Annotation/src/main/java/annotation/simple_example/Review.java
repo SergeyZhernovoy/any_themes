@@ -1,4 +1,4 @@
-package ru.szhernovoy.learning.annotation.use_enum;
+package annotation.simple_example;
 
 /**
  * @author Sergey Zhernovoy
