@@ -6,7 +6,8 @@
 
 /**
  *  книги в которых есть информация подробная
- *  Kishori - Beginning Java 8 Language Features  Lambda Expressions etc
+ *  Kishori - Beginning Java 8 Language Features  Lambda Expressions etc -
+ *  в этой книги описываются ограничения по аннотациям и способы их создания , обработки аннотация нет.
  *  Brett Spell Pro Java 8 Programming
  *  Spring 4 (на русском )
  *  Уолсс Spring в действии
