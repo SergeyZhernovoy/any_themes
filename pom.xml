@@ -25,6 +25,7 @@
         <module>PartVII</module>
         <module>PartVIII</module>
         <module>Annotation</module>
+        <module>Core</module>
     </modules>
 
 
