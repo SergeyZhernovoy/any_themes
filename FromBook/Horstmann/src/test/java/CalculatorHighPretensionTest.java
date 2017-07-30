@@ -1,4 +1,4 @@
-import lesson1.CalculatorHighPretension;
+import java8_new_features.CalculatorHighPretension;
 import org.junit.Assert;
 import org.junit.Test;
 

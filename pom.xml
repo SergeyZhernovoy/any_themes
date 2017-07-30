@@ -22,10 +22,10 @@
         <module>PartIV</module>
         <module>PartV</module>
         <module>PartVI</module>
-        <module>PartVII</module>
+        <module>FromBook</module>
         <module>PartVIII</module>
         <module>Annotation</module>
-        <module>Core</module>
+
     </modules>
 
 
