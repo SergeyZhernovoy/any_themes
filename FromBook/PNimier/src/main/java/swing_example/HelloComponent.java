@@ -18,7 +18,7 @@ public class HelloComponent extends JComponent{
 
     public static void main(String[] args) {
         JFrame jFrame = new JFrame();
-        jFrame.add(new HelloComponent3("Hello Java !!!"));
+        jFrame.add(new HelloComponent4("Hello Java !!!"));
         jFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         jFrame.setSize(300,300);
         jFrame.setVisible(true);
