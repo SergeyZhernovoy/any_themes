@@ -16,18 +16,15 @@
     </properties>
 
     <modules>
-        <module>PartI</module>
-        <module>PartII</module>
-        <module>PartIII</module>
+
         <module>PartIV</module>
-        <module>PartV</module>
+        <module>Spring</module>
         <module>PartVI</module>
-        <module>FromBook</module>
+        <module>Core</module>
         <module>PartVIII</module>
         <module>Annotation</module>
         <module>Algorithms</module>
         <module>Lambda</module>
-
     </modules>
 
 

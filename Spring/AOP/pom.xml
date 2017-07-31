@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>Lambda</artifactId>
-        <groupId>Lambda</groupId>
-        <version>1.0.1</version>
+        <artifactId>Spring</artifactId>
+        <groupId>Spring</groupId>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>lesson1</groupId>
-    <artifactId>calc</artifactId>
-    <version>1.0.1</version>
- </project>
+    <groupId>lesson2</groupId>
+    <artifactId>AOP</artifactId>
+
+</project>
