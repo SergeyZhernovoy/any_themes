@@ -25,6 +25,8 @@
         <module>FromBook</module>
         <module>PartVIII</module>
         <module>Annotation</module>
+        <module>Algorithms</module>
+        <module>Lambda</module>
 
     </modules>
 

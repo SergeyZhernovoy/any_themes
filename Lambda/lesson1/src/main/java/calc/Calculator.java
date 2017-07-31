@@ -1,8 +1,5 @@
 package calc;
 
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-
 /**
  * Created by admin on 08.03.2017.
  */
