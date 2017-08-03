@@ -1,3 +1,5 @@
+package example1;
+
 import org.springframework.aop.framework.ProxyFactory;
 
 /**

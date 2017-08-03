@@ -22,7 +22,7 @@
     </modules>
 
     <properties>
-        <spring_version>4.3.7.RELEASE</spring_version>
+        <spring_version>4.3.10.RELEASE</spring_version>
     </properties>
 
     <dependencies>
@@ -51,6 +51,19 @@
             <version>1.10.19</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>${spring_version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.5</version>
+        </dependency>
+
 
     </dependencies>
 

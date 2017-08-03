@@ -1,4 +1,4 @@
-/**
+package example1; /**
  * @author Sergey Zhernovoy
  * create on 21.06.2017.
  */
