@@ -12,6 +12,7 @@
     <modules>
         <module>lesson1</module>
         <module>lesson2</module>
+        <module>RWorbarton</module>
     </modules>
 
     <groupId>Lambda</groupId>
