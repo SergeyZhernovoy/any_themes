@@ -10,9 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <modules>
-        <module>lesson1</module>
-        <module>lesson2</module>
-        <module>RWorbarton</module>
+        <module>RWarburton</module>
     </modules>
 
     <groupId>Lambda</groupId>
