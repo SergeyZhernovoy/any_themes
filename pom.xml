@@ -22,7 +22,7 @@
         <module>PartVI</module>
         <module>Core</module>
         <module>PartVIII</module>
-        <module>Annotation</module>
+        <module>Reflection</module>
         <module>Algorithms</module>
         <module>Lambda</module>
     </modules>
