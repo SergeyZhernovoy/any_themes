@@ -16,6 +16,6 @@ public class Student implements Person,Named {
 
     @Override
     public String getDescription() {
-        return null;
+        return Person.super.getDescription();
     }
 }

@@ -5,6 +5,13 @@ package lesson4;
  */
 public interface Person extends Named {
 
-    String getDescription();
+    default String getDescription(){
+        return "Person";
+    };
+
+    public static String getName(){
+        return "Vasja";
+    }
+
 
 }
