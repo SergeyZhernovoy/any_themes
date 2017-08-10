@@ -13,7 +13,7 @@ public class SpringUI {
 
     public static void main(String[] args) throws PerformanceException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("javabean_di_approach.xml");
-        Performer musician = (Performer) ctx.getBean("bandMap");
+        Performer musician = (Performer) ctx.getBean("carl");
         //Performer first = (Performer) ctx.getBean("singleton");
         musician.perform();
     }

@@ -45,4 +45,11 @@
         </property>
     </bean>
 
+    <bean id="carl"
+          class="javabean_di_approach.InstrumentalList"
+          p:song = "#{kenny.song}"
+          p:instrument-ref ="saxofon">
+    </bean>
+
+
 </beans>
