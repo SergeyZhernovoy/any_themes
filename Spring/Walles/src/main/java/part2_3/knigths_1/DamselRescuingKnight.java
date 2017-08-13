@@ -1,4 +1,4 @@
-package knigths_1;/**
+package part2_3.knigths_1;/**
  * @author Sergey Zhernovoy
  * create on 02.08.2017.
  */

@@ -1,16 +1,16 @@
-package knights_2_example_DI;/**
+package part2_3.knights_2_example_DI;/**
  * @author Sergey Zhernovoy
  * create on 02.08.2017.
  */
 
-import knigths_1.Knight;
-import knigths_1.QuestException;
+import part2_3.knigths_1.Knight;
+import part2_3.knigths_1.QuestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BraveKnights implements knigths_1.Knight{
+public class BraveKnights implements part2_3.knigths_1.Knight{
     private static final Logger logger = LoggerFactory.getLogger(BraveKnights.class);
     private Quest quest;
 

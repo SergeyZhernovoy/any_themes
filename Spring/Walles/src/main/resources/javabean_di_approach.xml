@@ -2,32 +2,32 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
-
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--Здесь описывается содержимое контейнера спринга-->
 
-    <bean id="poeticJuggler" class="javabean_di_approach.PoeticJuggler">
+    <bean id="poeticJuggler" class="part2_3.javabean_di_approach.PoeticJuggler">
         <constructor-arg value="15"/>
         <constructor-arg ref="sonnet"/>
     </bean>
 
-    <bean id="sonnet" class="javabean_di_approach.PoemImpl"/>
+    <bean id="sonnet" class="part2_3.javabean_di_approach.PoemImpl"/>
     <bean id="singleton"
-          class="javabean_di_approach.Stage"
+          class="part2_3.javabean_di_approach.Stage"
           factory-method="getInstance"
           init-method="turnOnLight"
           destroy-method="turnOffLight"/>
 
-    <bean id = "truba" class="javabean_di_approach.Truba"/>
-    <bean id = "saxofon" class="javabean_di_approach.Saxofon"/>
+    <bean id = "truba" class="part2_3.javabean_di_approach.Truba"/>
+    <bean id = "saxofon" class="part2_3.javabean_di_approach.Saxofon"/>
     <bean id="kenny"
-          class="javabean_di_approach.InstrumentalList"
+          class="part2_3.javabean_di_approach.InstrumentalList"
           p:song = "Jingle bells"
           p:instrument-ref ="truba">
     </bean>
 
-    <bean id="band" class="javabean_di_approach.OneManBand">
+    <bean id="band" class="part2_3.javabean_di_approach.OneManBand">
         <property name="instruments">
             <list>
                 <ref bean="truba"/>
@@ -36,7 +36,7 @@
         </property>
     </bean>
 
-    <bean id="bandMap" class="javabean_di_approach.OneManBandWithKey">
+    <bean id="bandMap" class="part2_3.javabean_di_approach.OneManBandWithKey">
         <property name="instruments">
            <map>
                <entry key="SAXOFON" value-ref="saxofon"/>
@@ -46,7 +46,7 @@
     </bean>
 
     <bean id="carl"
-          class="javabean_di_approach.InstrumentalList"
+          class="part2_3.javabean_di_approach.InstrumentalList"
           p:song = "#{kenny.song}"
           p:instrument-ref ="saxofon">
     </bean>

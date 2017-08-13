@@ -1,4 +1,4 @@
-package knights_2_example_DI;/**
+package part2_3.knights_2_example_DI;/**
  * @author Sergey Zhernovoy
  * create on 03.08.2017.
  */

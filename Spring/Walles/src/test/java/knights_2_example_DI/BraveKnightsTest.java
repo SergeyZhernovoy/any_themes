@@ -1,6 +1,8 @@
 package knights_2_example_DI;
 
-import knigths_1.QuestException;
+import part2_3.knights_2_example_DI.BraveKnights;
+import part2_3.knights_2_example_DI.Quest;
+import part2_3.knigths_1.QuestException;
 import org.junit.Test;
 
 import static org.mockito.Mockito.mock;
