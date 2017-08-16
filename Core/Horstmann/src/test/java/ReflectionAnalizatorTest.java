@@ -21,6 +21,12 @@ public class ReflectionAnalizatorTest {
         reflectionAnalizator = new ReflectionAnalizator<>(date.getClass(),date);
         reflectionAnalizator.printFields();
 
+
+//        Person person = new Person();
+//        ReflectionAnalizator<Person> reflectionAnalizator = new ReflectionAnalizator<>(person.getClass(),person);
+//        reflectionAnalizator.printFields();
+
+
     }
 
 }

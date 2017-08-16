@@ -2,9 +2,6 @@ package lesson3;/**
  * Created by Sergey Zhernovoy on 17.06.2017.
  */
 
-import org.slf4j.LoggerFactory;
-import org.slf4j.Logger;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

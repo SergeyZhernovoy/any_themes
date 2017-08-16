@@ -13,5 +13,12 @@
     <artifactId>horstmann</artifactId>
     <version>1.0.1</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>PNimier</groupId>
+            <artifactId>pnimier</artifactId>
+            <version>1.0.1</version>
+        </dependency>
+    </dependencies>
 
 </project>
