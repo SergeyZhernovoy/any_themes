@@ -7,8 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import part2_3.javabean_di_approach.PerformanceException;
-import part2_3.javabean_di_approach.Performer;
+import interface_parts_for_all.PerformanceException;
+import interface_parts_for_all.Performer;
 
 public class SpringUI {
     private static final Logger logger = LoggerFactory.getLogger(SpringUI.class);

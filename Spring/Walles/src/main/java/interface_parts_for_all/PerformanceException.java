@@ -1,4 +1,4 @@
-package part2_3.javabean_di_approach;/**
+package interface_parts_for_all;/**
  * @author Sergey Zhernovoy
  * create on 06.08.2017.
  */

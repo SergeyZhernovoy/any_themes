@@ -3,6 +3,8 @@ package part2_3.javabean_di_approach;/**
  * create on 06.08.2017.
  */
 
+import interface_parts_for_all.PerformanceException;
+import interface_parts_for_all.Performer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

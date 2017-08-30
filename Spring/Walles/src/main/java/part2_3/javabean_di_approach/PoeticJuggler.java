@@ -1,4 +1,8 @@
-package part2_3.javabean_di_approach;/**
+package part2_3.javabean_di_approach;
+
+import interface_parts_for_all.PerformanceException;
+
+/**
  * @author Sergey Zhernovoy
  * create on 06.08.2017.
  */

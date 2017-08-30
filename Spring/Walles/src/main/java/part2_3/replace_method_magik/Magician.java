@@ -5,8 +5,8 @@ package part2_3.replace_method_magik;/**
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import part2_3.javabean_di_approach.PerformanceException;
-import part2_3.javabean_di_approach.Performer;
+import interface_parts_for_all.PerformanceException;
+import interface_parts_for_all.Performer;
 
 public class Magician implements Performer {
     private static final Logger logger = LoggerFactory.getLogger(Magician.class);

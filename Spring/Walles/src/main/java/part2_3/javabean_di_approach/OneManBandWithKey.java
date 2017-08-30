@@ -1,5 +1,9 @@
 package part2_3.javabean_di_approach;
 
+import interface_parts_for_all.Instrument;
+import interface_parts_for_all.PerformanceException;
+import interface_parts_for_all.Performer;
+
 import java.util.Map;
 
 /**
@@ -7,9 +11,9 @@ import java.util.Map;
  * create on 06.08.2017.
  */
 
-public class OneManBandWithKey implements Performer{
+public class OneManBandWithKey implements Performer {
 
-    private Map<String,Instrument> instruments;
+    private Map<String, Instrument> instruments;
 
     @Override
     public void perform() throws PerformanceException {
