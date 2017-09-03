@@ -25,6 +25,7 @@
         <module>Reflection</module>
         <module>Algorithms</module>
         <module>Lambda</module>
+        <module>Threads</module>
     </modules>
 
 
