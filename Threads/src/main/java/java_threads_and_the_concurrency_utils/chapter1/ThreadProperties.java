@@ -23,7 +23,7 @@ public class ThreadProperties implements Runnable{
         namedThread.setPriority(10);
         System.out.println("Current priority ? "+"Thread's name: "+ namedThread.getName()+" priority: "+namedThread.getPriority());
         System.out.println("Is this deamon thread ? "+"Thread's name: "+ namedThread.getName()+" daemon: "+namedThread.isDaemon());
-        namedThread.start();
+//        namedThread.start(); в этот момент нити уже не существует
 
 
 
