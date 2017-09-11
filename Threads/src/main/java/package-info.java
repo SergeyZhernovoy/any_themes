@@ -4,6 +4,7 @@
 
 Gonzalez J.F. - Mastering Concurrency Programming with Java 8 - 2016.pdf
 Java Threads and the Concurrency Utilities.pdf  - читаю эту , текущая страница 33
+Хорстманн смотрю тему по многопоточности с 745 страницы
 
  */
 

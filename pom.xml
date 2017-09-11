@@ -18,10 +18,8 @@
     <modules>
 
         <module>PartIV</module>
-        <module>Spring</module>
-        <module>PartVI</module>
+        <module>Spring_Basic</module>
         <module>Core</module>
-        <module>PartVIII</module>
         <module>Reflection</module>
         <module>Algorithms</module>
         <module>Lambda</module>
