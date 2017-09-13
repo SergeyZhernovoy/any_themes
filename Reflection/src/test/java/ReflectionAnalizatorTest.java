@@ -1,5 +1,5 @@
-import lesson3.Entity;
-import lesson3.ReflectionAnalizator;
+import annotation.analizator.Entity;
+import annotation.analizator.ReflectionAnalizator;
 import org.junit.Test;
 
 import java.time.LocalDate;
