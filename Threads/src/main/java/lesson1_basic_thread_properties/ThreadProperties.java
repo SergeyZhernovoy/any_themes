@@ -1,4 +1,4 @@
-package guide_basic_thread_properties;
+package lesson1_basic_thread_properties;
 
 /**
  * @author Sergey Zhernovoy
