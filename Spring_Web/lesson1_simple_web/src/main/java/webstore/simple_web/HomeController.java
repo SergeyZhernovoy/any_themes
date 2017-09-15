@@ -1,4 +1,4 @@
-package org.simple_web;
+package webstore.simple_web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

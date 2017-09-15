@@ -1,4 +1,4 @@
-package org.domain;
+package webstore.domain;
 
 import java.math.BigDecimal;
 
