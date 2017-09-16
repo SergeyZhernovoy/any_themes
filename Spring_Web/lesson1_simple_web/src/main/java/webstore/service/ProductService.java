@@ -10,4 +10,9 @@ import java.util.List;
  */
 public interface ProductService {
     List<Product> getAllProducts();
+
+    Product getProductById(String productId);
+
+    List<Product> getPrpductByCategory(String category);
+
 }

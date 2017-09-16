@@ -10,6 +10,7 @@ import webstore.domain.repository.ProductRepository;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class InMemoryProductsRepository implements ProductRepository {
@@ -21,7 +22,7 @@ public class InMemoryProductsRepository implements ProductRepository {
 
         Product iphone = new Product("P1234","iPhone 5s", new BigDecimal(500));
         iphone.setDescription("Apple iPhone 5s smartphone with 4.00-inch 640x1136 display and 8-megapixel rear camera");
-        iphone.setCategory("Smart Phone");
+        iphone.setCategory("Smartphone");
         iphone.setManufactured("Apple");
         iphone.setUnitsInStock(1000);
 
@@ -63,6 +64,18 @@ public class InMemoryProductsRepository implements ProductRepository {
 
         return product;
 
+    }
+
+    @Override
+    public List<Product> getProductByCategory(String category) {
+        return this.products
+                   .stream()
+                   .filter(product -> {
+                       if(product.getCategory().equals(category)){
+                           return true;
+                       } return false;
+                   })
+                   .collect(Collectors.toList());
     }
 }
 
