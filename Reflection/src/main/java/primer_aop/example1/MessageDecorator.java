@@ -1,4 +1,4 @@
-package guides_AOP.example1; /**
+package primer_aop.example1; /**
  * @author Sergey Zhernovoy
  * create on 21.06.2017.
  */

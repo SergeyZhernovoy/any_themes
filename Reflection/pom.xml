@@ -12,6 +12,13 @@
     <groupId>Reflection</groupId>
     <artifactId>Reflection</artifactId>
     <version>1.0.1</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aop</artifactId>
+            <version>4.3.10.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 
 </project>

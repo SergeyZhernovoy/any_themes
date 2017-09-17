@@ -1,4 +1,4 @@
-package guides_AOP.mkyong;/**
+package mykong;/**
  * @author Sergey Zhernovoy
  * create on 03.08.2017.
  */
