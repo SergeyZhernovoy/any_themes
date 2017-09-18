@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="magican" class="lesson5_aspect_obj_programs.lesson2.Magician"/>
+
+    <bean id="volunteer" class="lesson5_aspect_obj_programs.lesson2.Volunteer"/>
+
+
+    <!--Пример передачи параметра в метод точки среза-->
+    <aop:config>
+        <aop:aspect ref="magican">
+            <aop:pointcut
+                    id="thinking"
+                    expression="execution(* lesson5_aspect_obj_programs.lesson2.Thinker.thinkOfSomethings(String))
+                    and args(thougths)"/>
+            <aop:before
+                    method="interceptThougths"
+                    pointcut-ref="thinking"
+                    arg-names="thougths"/>
+
+        </aop:aspect>
+    </aop:config>
+
+</beans>
