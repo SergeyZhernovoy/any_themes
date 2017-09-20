@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="audience" class="lesson5_aspect_obj_programs.lesson1.Audience"/>
+    <bean id="audience" class="lesson5_aop.lesson1.Audience"/>
 
     <!--Первый способ организации АОП для каждого метода своя точка среза-->
     <!--<aop:config>-->
@@ -23,7 +23,7 @@
         </aop:aspect>
     </aop:config>
 
-    <bean id="cloun" class="lesson5_aspect_obj_programs.lesson1.Kloun"/>
+    <bean id="cloun" class="lesson5_aop.lesson1.Kloun"/>
 
 
 

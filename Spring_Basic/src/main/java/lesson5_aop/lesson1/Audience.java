@@ -1,4 +1,4 @@
-package lesson5_aspect_obj_programs.lesson1;
+package lesson5_aop.lesson1;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 

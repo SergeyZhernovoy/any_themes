@@ -1,4 +1,4 @@
-package lesson5_aspect_obj_programs.lesson2;/**
+package lesson5_aop.lesson2;/**
  * @author Sergey Zhernovoy
  * create on 18.09.2017.
  */

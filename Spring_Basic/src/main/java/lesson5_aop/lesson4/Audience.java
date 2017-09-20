@@ -1,4 +1,4 @@
-package lesson5_aspect_obj_programs.lesson4;
+package lesson5_aop.lesson4;
 
 import org.aspectj.lang.annotation.*;
 
