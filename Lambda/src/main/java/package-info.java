@@ -4,7 +4,8 @@
  */
 
 /**
-  CURRENT PAGE IS 56
+ Josh Juneau - Java 8 Recipes (The Expert's Voice in Java) - 2014.pdf часть 6
+
 
  JavaSE8.Вводный.курс.Хорстманн.2014.pdf текущий 33
  Уорбэртон Р. - Лямбда-выражения в Java 8 (2014).pdf
@@ -15,7 +16,7 @@
  Java Lambdas and Parallel Streams.pdf
  Alan Mycroft, Mario Fusco, Raoul-Gabriel Urma Java 8 in Action (2015).pdf
  Java Closures and Lambda.pdf
- Josh Juneau - Java 8 Recipes (The Expert's Voice in Java) - 2014.pdf часть 6
+
 
 
  */
