@@ -5,8 +5,6 @@ package java8_recieps.lesson1;/**
 
 public class HelloLambda {
 
-    private String name;
-
     public interface HelloType{
         void hello(String text);
     }
