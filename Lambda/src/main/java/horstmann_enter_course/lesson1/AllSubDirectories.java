@@ -14,6 +14,8 @@ import java.util.stream.Stream;
 
 public class AllSubDirectories {
 
+    private String name;
+
     public List<File> getAllSubDirectories(File fileUp){
         List<File> directories = new ArrayList<>();
         if (fileUp.isDirectory()){
