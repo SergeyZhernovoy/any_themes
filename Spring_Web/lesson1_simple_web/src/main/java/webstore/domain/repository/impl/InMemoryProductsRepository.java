@@ -8,8 +8,7 @@ import webstore.domain.Product;
 import webstore.domain.repository.ProductRepository;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Repository
@@ -71,11 +70,39 @@ public class InMemoryProductsRepository implements ProductRepository {
         return this.products
                    .stream()
                    .filter(product -> {
-                       if(product.getCategory().equals(category)){
+                       if(product.getCategory().equalsIgnoreCase(category)){
                            return true;
                        } return false;
                    })
                    .collect(Collectors.toList());
+    }
+
+    @Override
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filter) {
+        Set<Product> productsByBrand = new HashSet<>();
+        Set<Product> productsByCategory = new HashSet<>();
+
+        Set<String> criterias = filter.keySet();
+
+        if(criterias.contains("brand")){
+            for(String brand : filter.get("brand")){
+                for(Product product : products){
+                    if(brand.equalsIgnoreCase(product.getManufactured())){
+                        productsByBrand.add(product);
+                    }
+                }
+            }
+        }
+
+        if(criterias.contains("category")){
+            for(String category : filter.get("category")){
+                productsByCategory.addAll(getProductByCategory(category));
+            }
+        }
+
+        productsByCategory.retainAll(productsByBrand);
+
+        return productsByCategory;
     }
 }
 

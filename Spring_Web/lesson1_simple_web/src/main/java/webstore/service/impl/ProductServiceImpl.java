@@ -10,6 +10,8 @@ import webstore.domain.repository.ProductRepository;
 import webstore.service.ProductService;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -28,9 +30,16 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getPrpductByCategory(String category) {
+    public List<Product> getProductByCategory(String category) {
         return this.productRepository.getProductByCategory(category);
     }
+
+    @Override
+    public Set<Product> getProductsByFilter(Map<String, List<String>> filter) {
+        return this.productRepository.getProductsByFilter(filter);
+    }
+
+
 }
 
     

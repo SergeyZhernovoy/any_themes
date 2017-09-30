@@ -3,6 +3,8 @@ package webstore.service;
 import webstore.domain.Product;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @author Sergey Zhernovoy
@@ -13,6 +15,8 @@ public interface ProductService {
 
     Product getProductById(String productId);
 
-    List<Product> getPrpductByCategory(String category);
+    List<Product> getProductByCategory(String category);
+
+    Set<Product> getProductsByFilter(Map<String,List<String>> filter);
 
 }
