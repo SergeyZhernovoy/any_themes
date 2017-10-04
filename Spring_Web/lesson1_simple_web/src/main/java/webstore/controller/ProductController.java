@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import webstore.domain.Product;
 import webstore.service.ProductService;
 
 import java.util.List;
@@ -52,6 +53,18 @@ public class ProductController {
         return "product";
     }
 
+    @RequestMapping(value = "/add",method = RequestMethod.GET)
+    public String getAddProduct(Model model){
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "addProduct";
+    }
+
+    @RequestMapping(value = "/add",method = RequestMethod.POST)
+    public String addNewProduct(@ModelAttribute("product") Product newProduct){
+        productService.addProduct(newProduct);
+        return "redirect:/products";
+    }
 }
 
     

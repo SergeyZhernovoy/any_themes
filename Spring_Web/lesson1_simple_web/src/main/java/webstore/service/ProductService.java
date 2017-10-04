@@ -19,4 +19,6 @@ public interface ProductService {
 
     Set<Product> getProductsByFilter(Map<String,List<String>> filter);
 
+    void addProduct(Product product);
+
 }
