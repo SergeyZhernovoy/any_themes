@@ -3,6 +3,9 @@ package webstore.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import webstore.domain.Product;
@@ -22,6 +25,11 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+
+    @InitBinder
+    public void initialiseBinder(WebDataBinder binder){
+        binder.setDisallowedFields("unitsInOrder","discounted");
+    }
 
     @RequestMapping(value = "/{category}/{price}",method = RequestMethod.GET)
     public String getFilteredGrids(@PathVariable String category,@MatrixVariable(pathVar = "price") Map<String,Integer> range,@RequestParam String manufacturer){
@@ -61,7 +69,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String addNewProduct(@ModelAttribute("product") Product newProduct){
+    public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result){
+        String[] suppressedField = result.getSuppressedFields();
+        if(suppressedField.length > 0){
+            throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
+        }
+
         productService.addProduct(newProduct);
         return "redirect:/products";
     }

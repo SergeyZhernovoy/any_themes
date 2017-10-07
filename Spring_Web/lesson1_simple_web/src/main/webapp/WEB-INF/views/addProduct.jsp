@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
@@ -20,6 +21,7 @@
                 <h1>Products</h1>
                 <p>Add products</p>
             </div>
+            <a href="<c:url value="/j_spring_security_logout" />" class="btn btndanger btn-mini pull-right">logout</a>
         </div>
     </section>
     <section class="container">
@@ -27,7 +29,9 @@
             <fieldset>
                 <legend>Add new product</legend>
                 <div class="form-group">
-                    <label class="control-label col-lg-2 col-lg-2" for="productId">Product Id</label>
+                    <label class="control-label col-lg-2 col-lg-2" for="productId">
+                        <spring:message code="addProduct.form.productId"/>
+                    </label>
                     <div class="col-lg-10">
                         <form:input path="productId" id="productId" type="text"></form:input>
                     </div>
@@ -72,20 +76,6 @@
                     <label class="control-label col-lg-2 col-lg-2" for="unitsInStock">Units in stock</label>
                     <div class="col-lg-10">
                         <form:input path="unitsInStock" id="unitsInStock" type="number"></form:input>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2 col-lg-2" for="unitsInOrder">Units in order</label>
-                    <div class="col-lg-10">
-                        <form:input path="unitsInOrder" id="unitsInOrder" type="number"></form:input>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-lg-2 col-lg-2" for="discounted">Discountinued</label>
-                    <div class="col-lg-10">
-                        <form:checkbox path="discounted" id="discounted" />
                     </div>
                 </div>
 
