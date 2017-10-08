@@ -1,6 +1,6 @@
 import org.junit.Assert;
 import org.junit.Test;
-import syntax_feature_basic.CalculatorHighPretension;
+import basic.syntax_feature_basic.CalculatorHighPretension;
 
 import static org.hamcrest.core.Is.is;
 

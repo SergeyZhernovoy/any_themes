@@ -21,7 +21,7 @@
                 <h1>Products</h1>
                 <p>Add products</p>
             </div>
-            <a href="<c:url value="/j_spring_security_logout" />" class="btn btndanger btn-mini pull-right">logout</a>
+            <%--<a href="<c:url value="/j_spring_security_logout" />" class="btn btndanger btn-mini pull-right">logout</a>--%>
         </div>
     </section>
     <section class="container">
