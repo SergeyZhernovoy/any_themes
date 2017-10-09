@@ -1,4 +1,4 @@
-package lesson1;
+package input_ouput_classical.lesson1;
 
 import java.io.File;
 import java.io.IOException;
