@@ -92,7 +92,7 @@ public class RandomAccessExampleDataBase implements Serializable{
     }
 
     private Part read() throws IOException{
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for(int i = 0; i < PNUMLEN; i++){
             sb.append(raf.readChar());
