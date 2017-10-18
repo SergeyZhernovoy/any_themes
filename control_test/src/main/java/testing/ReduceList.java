@@ -1,8 +1,6 @@
 package testing;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -24,27 +22,46 @@ public class ReduceList {
         this.array = new ArrayList<>(Arrays.asList(1,2,3,4,5,5,5,6,6,6));
     }
 
+    public void setOrder(Boolean order){
+        this.order = order;
+    }
+
     public List<Integer> reduceList(){
 
-        List<Integer> repeat = new ArrayList<>();
+        Map<Integer,Integer> repeat = new HashMap<>();
         List<Integer> reduce = new ArrayList<>();
 
         this.array
                 .stream()
                 .forEach(x->{
-                    if(!repeat.contains(x))
-                        reduce.add(x);
-                  if(order && reduce.size() > 3){
-                       if(x == reduce.get(reduce.size()-1) && x == reduce.get(reduce.size()-2) && x == reduce.get(reduce.size()-3)){
-                          repeat.add(x);
-                      }
-                  }
-                });
+                    reduce.add(x);
+                    if(order && reduce.size() >= 3 ){
+                        if(!repeat.containsKey(x)){
+                            if( x == reduce.get(reduce.size()-1) && x == reduce.get(reduce.size()-2) && x == reduce.get(reduce.size()-3)){
+                                repeat.put(x,1);
+                            }
+                        }
+                    }
+                    else {
+                        if(repeat.containsKey(x)){
+                            repeat.replace(x,repeat.get(x)+1);
+                        } else {
+                            repeat.put(x,1);
+                        }
+                    }
 
+                });
         return  reduce
                 .stream()
-                .filter(x-> !repeat.contains(x)).collect(Collectors.toList());
-
+                .filter(x-> {
+                    if(order){
+                        return !repeat.containsKey(x);
+                    } else {
+                        int value = repeat.get(x) == null ? 0 : repeat.get(x) ;
+                        return  value  < 3;
+                    }
+                })
+                .collect(Collectors.toList());
     }
 
 

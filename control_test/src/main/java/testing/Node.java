@@ -1,8 +1,6 @@
 package testing;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author Sergey Zhernovoy
@@ -33,15 +31,16 @@ public class Node<E> {
     }
 
     public int getTreeHeight(){
-        return getTreeHeightReccur(this);
+        Map<Node<E>,Integer> frequency = new HashMap<>();
+        return getTreeHeightReccur(this,frequency);
     }
 
-    private int getTreeHeightReccur(Node<E> root){
+    private int getTreeHeightReccur(Node<E> root, Map<Node<E>,Integer> bag){
         int result = 1;
         if(root.getChildrenNode().size() > 0){
             List<Integer> maxHeigths = new ArrayList<>();
             for(Node<E> node : root.getChildrenNode()){
-                int resultReccur = getTreeHeightReccur(node);
+                int resultReccur = getTreeHeightReccur(node,bag);
                 maxHeigths.add(resultReccur);
             }
             result = Collections.max(maxHeigths);
