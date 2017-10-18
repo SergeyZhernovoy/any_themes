@@ -24,6 +24,7 @@
         <module>Algorithms</module>
         <module>Lambda</module>
         <module>Threads</module>
+        <module>control_test</module>
     </modules>
 
 
