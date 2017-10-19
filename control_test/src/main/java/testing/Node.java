@@ -1,66 +1,56 @@
 package testing;
 
-import java.util.*;
-
 /**
  * @author Sergey Zhernovoy
  * create on 18.10.2017.
  */
 
+
+/**
+ * Please write the java code for the following task - we need to
+
+ calculate height of a tree when given its root node. Please design your
+
+ own classes. We don't need tree rebalancing etc. Just the basic
+
+ class(es) sufficient to represent the tree and be able to calculate the
+
+ height. Feel free to make any assumptions. If you have time please
+
+ provide unit test.
+
+ Max time limit is 30 minutes to complete.
+ * @param <E>
+ */
+
 public class Node<E> {
 
-    private List<Node<E>> children = new ArrayList<>();
+    private Node<E> left;
 
-    private Node<E> parent;
+    private Node<E> right;
 
     private E value;
 
-    public Node(Node<E> parent, E value){
-        this.parent = parent;
+    public Node(E value){
         this.value = value;
     }
 
-    public List<Node<E>> getChildrenNode(){
-        return this.children;
-    }
 
-    public Node addChild(E value){
-        Node<E> child = new Node<>(this, value);
-        this.children.add(child);
-        return child;
-    }
-
-    public int getTreeHeight(){
-        Map<Node<E>,Integer> frequency = new HashMap<>();
-        return getTreeHeightReccur(this,frequency);
-    }
-
-    private int getTreeHeightReccur(Node<E> root, Map<Node<E>,Integer> bag){
-        int result = 1;
-        if(root.getChildrenNode().size() > 0){
-            List<Integer> maxHeigths = new ArrayList<>();
-            for(Node<E> node : root.getChildrenNode()){
-                int resultReccur = getTreeHeightReccur(node,bag);
-                maxHeigths.add(resultReccur);
-            }
-            result = Collections.max(maxHeigths);
+    public static <E> int maxDepth(Node<E> root) {
+        if (root != null) {
+            return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
         }
-        return result;
+        return 0;
     }
 
-    public static void main(String[] args) {
-        Node<String> tree = new Node<>(null,"root");
-        Node<String> child1 = tree.addChild("1");
-        Node<String> child2 = tree.addChild("2");
-        Node<String> child3 = child1.addChild("3");
-        Node<String> child4 = child2.addChild("4");
-        Node<String> child5 = child2.addChild("5");
-        Node<String> child6 = child5.addChild("6");
-        Node<String> child7 = child5.addChild("7");
-
-        System.out.println("Max heigt =  " + tree.getTreeHeight());
-
+    public void setLeft(Node<E> left){
+        this.left = left;
     }
+
+    public void setRight(Node<E> right){
+        this.right = right;
+    }
+
 }
 
     
