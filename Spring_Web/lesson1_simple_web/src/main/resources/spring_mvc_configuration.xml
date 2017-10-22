@@ -24,5 +24,10 @@
         <property name="basename" value="messages"/>
     </bean>
 
+    <mvc:resources mapping="/resource/**" location="/resources/"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1024000"/>
+    </bean>
 
 </beans>
