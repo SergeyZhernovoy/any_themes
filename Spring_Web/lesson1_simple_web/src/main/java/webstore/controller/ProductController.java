@@ -7,10 +7,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import webstore.domain.Product;
 import webstore.service.ProductService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +33,7 @@ public class ProductController {
     @InitBinder
     public void initialiseBinder(WebDataBinder binder){
         binder.setDisallowedFields("unitsInOrder","discounted");
+        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
     }
 
     @RequestMapping(value = "/{category}/{price}",method = RequestMethod.GET)
@@ -69,10 +74,20 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result){
+    public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result, HttpServletRequest request){
         String[] suppressedField = result.getSuppressedFields();
         if(suppressedField.length > 0){
             throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
+        }
+
+        MultipartFile image = newProduct.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        if(image != null && !image.isEmpty()){
+            try{
+                image.transferTo(new File(rootDirectory + "resources\\images\\"+newProduct.getProductId()+".png"));
+            } catch (IOException e) {
+                throw new RuntimeException("Product Image saving failed",e);
+            }
         }
 
         productService.addProduct(newProduct);
