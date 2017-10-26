@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import webstore.domain.Product;
+import webstore.exception.NoProductsFoundUnderCategoryException;
+import webstore.exception.ProductNotFoundException;
 import webstore.service.ProductService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,8 +51,12 @@ public class ProductController {
 
     @RequestMapping("/{category}")
     public ModelAndView getProductsByCategory(@PathVariable String category, ModelAndView modelAndView){
+        List<Product> products = this.productService.getProductByCategory(category);
+        if (products == null || products.isEmpty()){
+            throw new NoProductsFoundUnderCategoryException();
+        }
         modelAndView.setViewName("products");
-        modelAndView.addObject("products",this.productService.getProductByCategory(category));
+        modelAndView.addObject("products",products);
         return modelAndView;
     }
 
@@ -93,6 +99,19 @@ public class ProductController {
         productService.addProduct(newProduct);
         return "redirect:/products";
     }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ModelAndView handlerException(HttpServletRequest request, ProductNotFoundException exception){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("invalidProductId",exception.getProductId());
+        modelAndView.addObject("exception",exception);
+        modelAndView.addObject("url",request.getRequestURL()+"?"+request.getQueryString());
+        modelAndView.setViewName("productNotFound");
+        return modelAndView;
+    }
+
+
+
 }
 
     

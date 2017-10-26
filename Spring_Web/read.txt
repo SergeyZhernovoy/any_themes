@@ -1,2 +1,2 @@
- Читаю Spring MVC Beginner's Guide.pdf стр 298
+ Читаю Spring MVC Beginner's Guide.pdf стр 309
  со спрринг секьюрити не получилось. Отдельная тема буду копаться в ней дополнительно

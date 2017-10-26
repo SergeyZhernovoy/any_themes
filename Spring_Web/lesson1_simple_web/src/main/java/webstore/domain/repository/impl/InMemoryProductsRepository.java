@@ -6,6 +6,7 @@ package webstore.domain.repository.impl;/**
 import org.springframework.stereotype.Repository;
 import webstore.domain.Product;
 import webstore.domain.repository.ProductRepository;
+import webstore.exception.ProductNotFoundException;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -49,20 +50,18 @@ public class InMemoryProductsRepository implements ProductRepository {
 
     @Override
     public Product getProductById(final String productId) {
-        Product product = products
+        List<Product> productBySearch = products
                 .stream()
                 .filter(prod->{
                     if(prod.getProductId()!= null && prod.getProductId().equals(productId)){
                         return true;
                     } return false;
-                }).findFirst().get();
+                }).collect(Collectors.toList());
 
-        if (product.getProductId() == null){
-            throw new IllegalArgumentException("No product found with ID = "+productId);
+        if (productBySearch.isEmpty()){
+            throw new ProductNotFoundException(productId);
         }
-
-        return product;
-
+        return productBySearch.get(0);
     }
 
     @Override
