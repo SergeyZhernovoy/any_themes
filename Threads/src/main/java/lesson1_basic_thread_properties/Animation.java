@@ -1,4 +1,4 @@
-package part9_threads;/**
+package lesson1_basic_thread_properties;/**
  * @author Sergey Zhernovoy
  * create on 31.08.2017.
  */

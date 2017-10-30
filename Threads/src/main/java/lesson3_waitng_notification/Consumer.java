@@ -1,4 +1,6 @@
-package part9_threads;/**
+package lesson3_waitng_notification;
+
+/**
  * @author Sergey Zhernovoy
  * create on 04.09.2017.
  */

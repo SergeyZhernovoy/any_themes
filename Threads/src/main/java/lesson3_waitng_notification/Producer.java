@@ -1,4 +1,4 @@
-package part9_threads;
+package lesson3_waitng_notification;
 
 
 import java.util.ArrayList;
