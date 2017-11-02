@@ -11,7 +11,7 @@ multiple threads.
 
 
 
-Goetz B. - Java Concurrency in Practice - 2006.pdf (англ)  30
+Goetz B. - Java Concurrency in Practice - 2006.pdf (англ)  34
 Java Threads, 2Ed (O'Reilly).pdf (англ)
 Java Threads and the Concurrency Utilities.pdf (англ)
 j-jtp10264-pdf.pdf - статья
