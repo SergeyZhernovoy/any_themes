@@ -4,15 +4,10 @@ package lesson5_executors.k_near_neighbors.data;/**
  */
 
 public abstract class Sample {
-    private String tag;
-    private double[] example;
 
     public abstract String getTag();
 
-
-
     public abstract double[] getExample();
-
 
 
 }

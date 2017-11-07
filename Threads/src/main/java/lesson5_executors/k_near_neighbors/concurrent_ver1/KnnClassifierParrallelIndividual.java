@@ -1,7 +1,6 @@
 package lesson5_executors.k_near_neighbors.concurrent_ver1;
 
 import lesson5_executors.k_near_neighbors.data.Distance;
-import lesson5_executors.k_near_neighbors.EuclideanDistanceCalculator;
 import lesson5_executors.k_near_neighbors.data.Sample;
 
 import java.util.*;
@@ -31,7 +30,7 @@ public class KnnClassifierParrallelIndividual {
         this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(numThreads);
     }
 
-    public String classify(Sample example){
+    public String classify(Sample example) throws InterruptedException {
 
         Distance[] distance = new Distance[this.dataSet.size()];
         CountDownLatch endController = new CountDownLatch(this.dataSet.size());
@@ -41,26 +40,46 @@ public class KnnClassifierParrallelIndividual {
         for(Sample localExample : this.dataSet){
 
             IndividualDistanceTask task = new IndividualDistanceTask(distance,index,localExample,example,endController);
-
-            distance[index] = new Distance();
-            distance[index].setIndex(index);
-            distance[index++].setDistance(EuclideanDistanceCalculator.calculate(localExample,example));
+            executor.execute(task);
+            index++;
+        }
+        endController.await();
+        if(parallelSort){
+            Arrays.parallelSort(distance);
+        } else {
+            Arrays.sort(distance);
         }
 
-        Arrays.sort(distance);
-
-        Map<String, Integer> result = new HashMap<>();
+        Hashtable<String,Integer> results = new Hashtable<>();
         for(int i = 0; i < k ; i++){
             Sample localeExample = this.dataSet.get(distance[i].getIndex());
             String tag = localeExample.getTag();
-            result.merge(tag,1,(a,b)->a+b);
+            Integer counter = results.get(tag);
+            if(counter == null){
+                counter = new Integer(1);
+                results.put(tag,counter);
+            } else {
+                counter++;
+            }
         }
 
-        return Collections
-                .max(result.entrySet(),Map.Entry.comparingByValue())
-                .getKey();
+        Enumeration<String> keys = results.keys();
+        int max = 0;
+        String result = null;
+        while(keys.hasMoreElements()){
+            String key = keys.nextElement();
+            int value = results.get(key);
+            if(value > max){
+                max = value;
+                result = key;
+            }
+        }
+        return result;
     }
 
+    public void destroy(){
+        executor.shutdown();
+    }
 }
 
     
