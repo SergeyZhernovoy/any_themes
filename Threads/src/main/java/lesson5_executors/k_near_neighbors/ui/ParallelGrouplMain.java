@@ -14,8 +14,6 @@ import java.util.List;
 
 public class ParallelGrouplMain {
     public static void main(String[] args) {
-
-
         String path1 = SerialMain.class.getClassLoader().getResource("data/bank.data").getFile().substring(1);
         String path2 = SerialMain.class.getClassLoader().getResource("data/bank.test").getFile().substring(1);
 
@@ -30,7 +28,7 @@ public class ParallelGrouplMain {
         success = 0;
         mistakes = 0;
         KnnClassifierParallelGroup classifier = new KnnClassifierParallelGroup(
-                train, k, 1, true);
+                train, k, 1, false);
         try {
             Date start, end;
             start = new Date();
@@ -51,7 +49,7 @@ public class ParallelGrouplMain {
         classifier.destroy();
         System.out.println("******************************************");
         System.out.println("Parallel Classifier Group - K: " + k
-                + " - Factor 1 - Parallel Sort: true");
+                + " - Factor 1 - Parallel Sort: false");
         System.out.println("Success: " + success);
         System.out.println("Mistakes: " + mistakes);
         System.out.println("Execution Time: " + (currentTime / 1000)

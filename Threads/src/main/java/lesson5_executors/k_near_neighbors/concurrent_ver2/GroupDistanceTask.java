@@ -37,7 +37,6 @@ public class GroupDistanceTask implements Runnable {
             distances[index] = new Distance();
             distances[index].setIndex(index);
             distances[index].setDistance(EuclideanDistanceCalculator.calculate(localExample,example));
-
         }
         endController.countDown();
     }

@@ -36,7 +36,7 @@ public class KnnClassifierParallelGroup {
     public String classify(Sample example) throws InterruptedException {
 
         Distance[] distance = new Distance[this.dataSet.size()];
-        CountDownLatch endController = new CountDownLatch(this.dataSet.size());
+        CountDownLatch endController = new CountDownLatch(numThreads);
 
         int length =  dataSet.size() / numThreads;
         int startIndex = 0, endIndex = length;
@@ -49,7 +49,7 @@ public class KnnClassifierParallelGroup {
             } else {
                 endIndex = dataSet.size();
             }
-
+            executor.execute(task);
         }
         endController.await();
         if(parallelSort){
