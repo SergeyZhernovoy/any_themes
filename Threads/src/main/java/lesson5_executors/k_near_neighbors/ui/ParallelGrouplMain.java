@@ -1,7 +1,7 @@
 package lesson5_executors.k_near_neighbors.ui;
 
 import lesson5_executors.k_near_neighbors.Service.BankMarketingLoader;
-import lesson5_executors.k_near_neighbors.concurrent_ver1.KnnClassifierParrallelIndividual;
+import lesson5_executors.k_near_neighbors.concurrent_ver2.KnnClassifierParallelGroup;
 import lesson5_executors.k_near_neighbors.data.BankMarketing;
 
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.List;
  * create on 09.11.2017.
  */
 
-public class ParallelIndividualMain {
+public class ParallelGrouplMain {
     public static void main(String[] args) {
 
 
@@ -29,7 +29,7 @@ public class ParallelIndividualMain {
         int k = Integer.parseInt(args[0]);
         success = 0;
         mistakes = 0;
-        KnnClassifierParrallelIndividual classifier = new KnnClassifierParrallelIndividual(
+        KnnClassifierParallelGroup classifier = new KnnClassifierParallelGroup(
                 train, k, 1, true);
         try {
             Date start, end;
@@ -50,7 +50,7 @@ public class ParallelIndividualMain {
         }
         classifier.destroy();
         System.out.println("******************************************");
-        System.out.println("Parallel Classifier Individual - K: " + k
+        System.out.println("Parallel Classifier Group - K: " + k
                 + " - Factor 1 - Parallel Sort: true");
         System.out.println("Success: " + success);
         System.out.println("Mistakes: " + mistakes);
