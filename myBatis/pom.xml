@@ -13,5 +13,8 @@
     <artifactId>myBatis</artifactId>
     <version>1.0.1</version>
 
+    <dependencies>
+
+    </dependencies>
 
 </project>
