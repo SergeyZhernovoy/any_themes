@@ -1,13 +1,18 @@
-package lesson1_ibatis.mappers;/**
+package lesson1_ibatis.mappers;
+
+import lesson1_ibatis.domain.Student;
+
+import java.util.List;
+
+/**
  * @author Sergey Zhernovoy
  * create on 14.11.2017.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-public class StudentMapper {
-    private static final Logger logger = LoggerFactory.getLogger(StudentMapper.class);
+public interface StudentMapper {
+    List<Student> findAllStudents();
+    Student findStudentById(Integer id);
+    void insertStudent(Student student);
 }
 
     
