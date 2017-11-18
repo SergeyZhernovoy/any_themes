@@ -1,4 +1,4 @@
-package lesson1_ibatis.service;
+package lesson1_ibatis.util;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.*;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="lesson1_ibatis.domain.Student">
+<mapper namespace="lesson1_ibatis.mappers.StudentMapper">
     <resultMap id="StudentResult" type="Student">
-        <id property="studId" column="id"/>
+        <id property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="email" column="email"/>
         <result property="dob" column="dob"/>

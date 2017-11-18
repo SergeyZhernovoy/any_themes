@@ -20,7 +20,7 @@
     </environments>
 
     <mappers>
-        <mapper resource="lesson1_ibatis/mappers/StudentMapper.xml"/>
+        <mapper resource="mappers/StudentMapper.xml"/>
     </mappers>
 
 </configuration>

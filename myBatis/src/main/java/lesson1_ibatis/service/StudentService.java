@@ -5,6 +5,7 @@ package lesson1_ibatis.service;/**
 
 import lesson1_ibatis.domain.Student;
 import lesson1_ibatis.mappers.StudentMapper;
+import lesson1_ibatis.util.MyBatisSqlSessionFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class StudentService implements StudentMapper {
 
     @Override
     public Student findStudentById(Integer id) {
+        logger.debug("Select stident by ID:{}",id);
         SqlSession sqlSession = MyBatisSqlSessionFactory.openSession();
         try {
             StudentMapper studentMapper = sqlSession.getMapper(StudentMapper.class);
