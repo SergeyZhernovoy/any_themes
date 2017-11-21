@@ -1,13 +1,39 @@
-package spring_boot.entity;/**
+package spring_boot.entity;
+
+import lombok.Data;
+
+import javax.persistence.*;
+import java.util.List;
+
+/**
  * @author Sergey Zhernovoy
  * create on 21.11.2017.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
+@Entity
+@Data
 public class Book {
-    private static final Logger logger = LoggerFactory.getLogger(Book.class);
+
+    @Id
+    @GeneratedValue
+    private Long id;
+    private String isbn;
+    private String title;
+    private String description;
+
+    @ManyToOne
+    private Author author;
+    @ManyToOne
+    private Publisher publisher;
+    @ManyToMany
+    private List<Reviewers> reviewers;
+
+    public Book(String isbn, String title, String description, Author author, Publisher publisher) {
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+    }
 }
 
     
