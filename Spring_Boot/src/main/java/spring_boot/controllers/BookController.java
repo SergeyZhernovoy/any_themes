@@ -1,12 +1,15 @@
 package spring_boot.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import spring_boot.entity.Book;
+import spring_boot.entity.Isbn;
+import spring_boot.entity.Reviewers;
 import spring_boot.repositories.BookRepository;
+import spring_boot.utils.IsbnEditor;
+
+import java.util.List;
 
 /**
  * @author Sergey Zhernovoy
@@ -14,11 +17,16 @@ import spring_boot.repositories.BookRepository;
  */
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/books")
 public class BookController {
 
     @Autowired
     private BookRepository bookRepository;
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.registerCustomEditor(Isbn.class, new IsbnEditor());
+    }
 
     @RequestMapping(value = "",method = RequestMethod.GET)
     public Iterable<Book> getAllBook(){
@@ -26,8 +34,13 @@ public class BookController {
     }
 
     @RequestMapping(value = "/{isbn}", method = RequestMethod.GET)
-    public Book getBook(@PathVariable String isbn){
-        return bookRepository.findBookByIsbn(isbn);
+    public Book getBook(@PathVariable Isbn isbn){
+        return bookRepository.findBookByIsbn(isbn.getIsbn());
+    }
+
+    @RequestMapping(value = "/{isbn}/reviewers", method = RequestMethod.GET)
+    public List<Reviewers> getAllReviewers(@PathVariable("isbn") Book book){
+        return book.getReviewers();
     }
 
 }
