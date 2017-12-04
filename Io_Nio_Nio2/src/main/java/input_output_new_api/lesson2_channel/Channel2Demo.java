@@ -16,7 +16,7 @@ import java.nio.channels.ScatteringByteChannel;
 public class Channel2Demo {
     public static void main(String[] args) throws IOException {
         ScatteringByteChannel src;
-        String filePath = Channel2Demo.class.getResource("x.dat").getPath();
+        String filePath = Channel2Demo.class.getClassLoader().getResource("x.dat").getPath();
         FileInputStream fis = new FileInputStream(filePath);
         src = (ScatteringByteChannel) Channels.newChannel(fis);
         ByteBuffer buffer1 = ByteBuffer.allocateDirect(5);
