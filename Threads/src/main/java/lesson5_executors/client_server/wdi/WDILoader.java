@@ -16,12 +16,11 @@ import java.util.List;
 public class WDILoader {
 
     public List<WDI> load(String route) {
-        Path file= Paths.get(route);
+        Path file= Paths.get(WDILoader.class.getClassLoader().getResource(route).getFile().substring(1));
         List<WDI> dataSet=new ArrayList<>();
         int lineNumber=1;
         try (InputStream in = Files.newInputStream(file);
-             BufferedReader reader =
-                     new BufferedReader(new InputStreamReader(in))) {
+             BufferedReader reader =  new BufferedReader(new InputStreamReader(in))) {
             String line = null;
             //First line are headers
             line = reader.readLine();
