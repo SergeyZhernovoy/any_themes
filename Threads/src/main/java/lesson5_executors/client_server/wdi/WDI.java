@@ -15,17 +15,17 @@ public class WDI {
 
     public void setData(String[] data) throws Exception {
 
-        if (data.length!=59) {
+        if (data.length!=63) {
             throw new Exception("Data length is not correct: "+ data.length);
         }
-        values=new Double[55];
+        values=new Double[59];
         countryName=getString(data[0]);
         countryCode=getString(data[1]);
         indicatorName=getString(data[2]);
         indicatorCode=getString(data[3]);
 
-        for(int index = 0; index < data.length;index++){
-            values[index] = getValue(data[index+4]);
+        for(int index = 4,indexValue = 0; index < data.length;index++, indexValue++){
+            values[indexValue] = getValue(data[index]);
         }
     }
 

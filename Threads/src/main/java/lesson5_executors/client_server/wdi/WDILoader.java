@@ -16,7 +16,7 @@ import java.util.List;
 public class WDILoader {
 
     public List<WDI> load(String route) {
-        Path file= Paths.get(WDILoader.class.getClassLoader().getResource(route).getFile().substring(1));
+        Path file= Paths.get(route);
         List<WDI> dataSet=new ArrayList<>();
         int lineNumber=1;
         try (InputStream in = Files.newInputStream(file);
@@ -40,7 +40,7 @@ public class WDILoader {
     }
 
     private String[] parse(String line) {
-        String [] ret=new String[59];
+        String [] ret=new String[63];
         int index=0;
         StringBuffer buffer=new StringBuffer();
         boolean enComillas=false;
