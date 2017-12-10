@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/mvc
+	                       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	                       http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="webstore" />
+    <mvc:annotation-driven enable-matrix-variables="true"/>
+    <!--<import resource="security-context-config.xml"/>-->
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="messages"/>
+    </bean>
+
+    <mvc:resources mapping="/resource/**" location="/resources/"/>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1024000"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="defaultViews">
+            <list>
+                <ref bean="jsonView2"/>
+                <ref bean="xmlView2"/>
+            </list>
+        </property>
+    </bean>
+    <bean id="jsonView2" class="org.springframework.web.servlet.view.json.MappingJackson2JsonView">
+        <property name="prettyPrint" value="true"/>
+    </bean>
+    <bean id="xmlView2" class="org.springframework.web.servlet.view.xml.MarshallingView">
+        <constructor-arg>
+            <bean class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+                <property name="classesToBeBound">
+                    <list>
+                        <value>webstore.domain.Product</value>
+                    </list>
+                </property>
+            </bean>
+        </constructor-arg>
+
+    </bean>
+
+</beans>
