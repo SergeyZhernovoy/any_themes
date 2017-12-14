@@ -2,6 +2,7 @@ package lesson5_executors.client_server.servers.concurrent;
 
 import lesson5_executors.client_server.clients.concurrency.RequestTask;
 import lesson5_executors.client_server.util.Constants;
+import lesson5_executors.client_server.util.Logger;
 import lesson5_executors.client_server.wdi.WDIDAO;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Sergey Zhernovoy
@@ -21,30 +23,56 @@ public class ConcurrentServer {
 
     private ParallelCache parallelCache;
 
-    private ServerSocket serverSocket;
-
     private volatile boolean stopped = false;
 
     private WDIDAO wdidao;
 
-    public ConcurrentServer(final WDIDAO wdidao) throws IOException {
+    public ConcurrentServer() {
+        this.wdidao = WDIDAO.getDAO();
         this.threadPoolExecutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
-        this.wdidao = wdidao;
-        this.serverSocket = new ServerSocket(Constants.CONCURRENT_PORT);
+        this.parallelCache = new ParallelCache();;
+        System.out.println("Initialize completed.");
+        Logger.initialize();
     }
 
-    public void execute(){
+    public void execute() throws IOException, InterruptedException {
 
-        do{
-            try{
-              Socket socket = serverSocket.accept();
-              RequestTask requestTask = new RequestTask(socket);
-              this.threadPoolExecutor.execute(requestTask);
-            } catch (IOException exc){
+        try(ServerSocket serverSocket = new ServerSocket(Constants.CONCURRENT_PORT)){
+            do{
+                try{
+                    Socket socket = serverSocket.accept();
+                    RequestTask requestTask = new RequestTask(socket,parallelCache);
+                    this.threadPoolExecutor.execute(requestTask);
+                } catch (IOException exc){
+                    exc.printStackTrace();
+                }
+            } while (!stopped);
+        }
 
-            }
-        } while (!stopped);
+        threadPoolExecutor.awaitTermination(1, TimeUnit.DAYS);
+        parallelCache.shutdown();
+        System.out.println("Cache ok");
+        System.out.println("Main server thread ended");
+    }
 
+    public ThreadPoolExecutor getExecutor(){
+        return threadPoolExecutor;
+    }
+
+    public ParallelCache getParallelCache() {
+        return parallelCache;
+    }
+
+    public void shutdown(){
+        this.stopped = true;
+        System.out.println("Shutting down the server ... ");
+        System.out.println("Shutting down executor ... ");
+        threadPoolExecutor.shutdown();
+        System.out.println("Executor ok");
+        System.out.println("Shutting down logger");
+        Logger.sendMessage("Shutting down logger");
+        Logger.shutdown();
+        System.out.println("Logger ok");
     }
 
 }
