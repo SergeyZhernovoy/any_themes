@@ -16,12 +16,12 @@ hs_err_pid*
 .idea/
 *.iml
 
-/out/
+out/
 
-/target/
+target/
 
 .gradle/
 
-/build/
+build/
 
-/gradle
+gradle/
