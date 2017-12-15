@@ -18,4 +18,6 @@ public class Constants {
      * Path to the file with the WDI data
      */
     public static final String DATA_ROUTE="D:\\Projects\\data\\WDIData.csv";
+
+    public static final String LOG_ROUTE="D:\\Projects\\data";
 }

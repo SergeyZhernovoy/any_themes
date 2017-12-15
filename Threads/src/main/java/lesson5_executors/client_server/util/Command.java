@@ -3,7 +3,7 @@ package lesson5_executors.client_server.util;/**
  * create on 09.12.2017.
  */
 
-public abstract class Command {
+public abstract class Command implements TaskExecute{
 
     protected String[] command;
 
@@ -11,11 +11,11 @@ public abstract class Command {
         this.command = command;
     }
 
+    /**
+     * Abstract method that executes the command
+     * @return An String with the response of the command
+     */
     public abstract String execute();
-
-    public boolean isCacheble() {
-        return true;
-    }
 }
 
     

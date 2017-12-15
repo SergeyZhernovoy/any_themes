@@ -1,11 +1,11 @@
-package lesson5_executors.client_server.clients.concurrency;/**
+package lesson5_executors.client_server.servers.concurrent;/**
  * @author Sergey Zhernovoy
  * create on 12.12.2017.
  */
 
-import lesson5_executors.client_server.servers.concurrent.ParallelCache;
-import lesson5_executors.client_server.util.Command;
-import lesson5_executors.client_server.util.Logger;
+import lesson5_executors.client_server.util.CommandConccurency;
+import lesson5_executors.client_server.util.cache.ParallelCache;
+import lesson5_executors.client_server.util.logger.Logger;
 import lesson5_executors.client_server.util.impl.ConcurrencyErrorCommand;
 import lesson5_executors.client_server.util.impl.ConcurrencyQueryCommand;
 import lesson5_executors.client_server.util.impl.ConcurrencyReportCommand;
@@ -20,9 +20,11 @@ import java.net.Socket;
 public class RequestTask implements Runnable {
     private Socket clientSocket;
     private ParallelCache parallelCache;
-    public RequestTask(final Socket socket, final ParallelCache parallelCache) {
+    private final ConcurrentServer concurrentServer;
+    public RequestTask(final Socket socket, final ParallelCache parallelCache, final ConcurrentServer server) {
         this.clientSocket = socket;
         this.parallelCache = parallelCache;
+        this.concurrentServer = server;
     }
 
     /**
@@ -40,43 +42,50 @@ public class RequestTask implements Runnable {
     public void run() {
         try(PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);
             BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))) {
-
             String line = in.readLine();
             Logger.sendMessage(line);
             String ret = parallelCache.get(line);
             if(ret == null){
-                Command command;
+                CommandConccurency command;
                 String[] commandData = line.split(";");
                 System.err.println("Command: " + commandData[0]);
                 switch(commandData[0]){
                     case "q":
                         System.err.println("Query");
-                        command = new ConcurrencyQueryCommand(commandData);
+                        command = new ConcurrencyQueryCommand(commandData, concurrentServer);
                         break;
                     case "r":
                         System.err.println("Report");
-                        command = new ConcurrencyReportCommand(commandData);
+                        command = new ConcurrencyReportCommand(commandData,concurrentServer);
                         break;
                     case "z":
                         System.err.println("Stop");
-                        command = new ConcurrencyStopCommand(commandData);
+                        command = new ConcurrencyStopCommand(commandData,concurrentServer);
                         break;
                     default:
                         System.err.println("Error");
-                        command = new ConcurrencyErrorCommand(commandData);
+                        command = new ConcurrencyErrorCommand(commandData,concurrentServer);
                 }
                 ret  = command.execute();
-                if(command.isCacheble()){
-
+                if(command.isCacheable()){
+                    this.parallelCache.put(line,ret);
                 }
-
-
-
+            } else {
+                Logger.sendMessage("Command "+line+" was found in the cache");
             }
+            System.err.println(ret);
+            out.println(ret);
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            try{
+                clientSocket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
     }
 }
 

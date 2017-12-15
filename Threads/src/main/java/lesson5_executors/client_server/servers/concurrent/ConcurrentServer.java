@@ -1,8 +1,8 @@
 package lesson5_executors.client_server.servers.concurrent;
 
-import lesson5_executors.client_server.clients.concurrency.RequestTask;
 import lesson5_executors.client_server.util.Constants;
-import lesson5_executors.client_server.util.Logger;
+import lesson5_executors.client_server.util.cache.ParallelCache;
+import lesson5_executors.client_server.util.logger.Logger;
 import lesson5_executors.client_server.wdi.WDIDAO;
 
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class ConcurrentServer {
             do{
                 try{
                     Socket socket = serverSocket.accept();
-                    RequestTask requestTask = new RequestTask(socket,parallelCache);
+                    RequestTask requestTask = new RequestTask(socket,parallelCache,this);
                     this.threadPoolExecutor.execute(requestTask);
                 } catch (IOException exc){
                     exc.printStackTrace();
@@ -73,6 +73,11 @@ public class ConcurrentServer {
         Logger.sendMessage("Shutting down logger");
         Logger.shutdown();
         System.out.println("Logger ok");
+    }
+
+    public static void main(String[] args) throws IOException, InterruptedException {
+        ConcurrentServer server = new ConcurrentServer();
+        server.execute();
     }
 
 }

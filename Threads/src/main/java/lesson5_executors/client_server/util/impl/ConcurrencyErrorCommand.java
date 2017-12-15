@@ -3,20 +3,22 @@ package lesson5_executors.client_server.util.impl;/**
  * create on 14.12.2017.
  */
 
-import lesson5_executors.client_server.util.Command;
+import lesson5_executors.client_server.servers.concurrent.ConcurrentServer;
+import lesson5_executors.client_server.util.CommandConccurency;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConcurrencyErrorCommand extends Command {
+public class ConcurrencyErrorCommand extends CommandConccurency {
     private static final Logger logger = LoggerFactory.getLogger(ConcurrencyErrorCommand.class);
 
-    public ConcurrencyErrorCommand(String[] commandData) {
-        super(commandData);
+    public ConcurrencyErrorCommand(String[] commandData, final ConcurrentServer concurrentServer) {
+        super(commandData,concurrentServer);
+        setCacheable(false);
     }
 
     @Override
     public String execute() {
-        return null;
+        return "Unknown command: "+command[0];
     }
 }
 
