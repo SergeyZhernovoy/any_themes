@@ -25,6 +25,8 @@ public class ConcurrentServer {
 
     private volatile boolean stopped = false;
 
+    private ServerSocket serverSocket;
+
     private WDIDAO wdidao;
 
     public ConcurrentServer() {
@@ -37,7 +39,8 @@ public class ConcurrentServer {
 
     public void execute() throws IOException, InterruptedException {
 
-        try(ServerSocket serverSocket = new ServerSocket(Constants.CONCURRENT_PORT)){
+        try{
+            this.serverSocket = new ServerSocket(Constants.CONCURRENT_PORT);
             do{
                 try{
                     Socket socket = serverSocket.accept();
@@ -47,6 +50,8 @@ public class ConcurrentServer {
                     exc.printStackTrace();
                 }
             } while (!stopped);
+        } catch (Exception exc){
+            exc.printStackTrace();
         }
 
         threadPoolExecutor.awaitTermination(1, TimeUnit.DAYS);
@@ -69,8 +74,15 @@ public class ConcurrentServer {
         System.out.println("Shutting down executor ... ");
         threadPoolExecutor.shutdown();
         System.out.println("Executor ok");
+        try {
+            this.serverSocket.close();
+            System.out.println("Socket ok");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         System.out.println("Shutting down logger");
         Logger.sendMessage("Shutting down logger");
+
         Logger.shutdown();
         System.out.println("Logger ok");
     }

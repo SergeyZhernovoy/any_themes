@@ -5,11 +5,8 @@ package lesson5_executors.client_server.servers.concurrent;/**
 
 import lesson5_executors.client_server.util.CommandConccurency;
 import lesson5_executors.client_server.util.cache.ParallelCache;
+import lesson5_executors.client_server.util.impl.*;
 import lesson5_executors.client_server.util.logger.Logger;
-import lesson5_executors.client_server.util.impl.ConcurrencyErrorCommand;
-import lesson5_executors.client_server.util.impl.ConcurrencyQueryCommand;
-import lesson5_executors.client_server.util.impl.ConcurrencyReportCommand;
-import lesson5_executors.client_server.util.impl.ConcurrencyStopCommand;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,6 +54,10 @@ public class RequestTask implements Runnable {
                     case "r":
                         System.err.println("Report");
                         command = new ConcurrencyReportCommand(commandData,concurrentServer);
+                        break;
+                    case "s":
+                        System.err.println("Status");
+                        command = new ConcurrencyStatusCommand(commandData,concurrentServer);
                         break;
                     case "z":
                         System.err.println("Stop");
