@@ -3,7 +3,7 @@ package lesson5_executors.client_server.servers.concurrent;/**
  * create on 12.12.2017.
  */
 
-import lesson5_executors.client_server.util.CommandConccurency;
+import lesson5_executors.client_server.util.ConcurrencyCommand;
 import lesson5_executors.client_server.util.cache.ParallelCache;
 import lesson5_executors.client_server.util.logger.Logger;
 import lesson5_executors.client_server.util.impl.ConcurrencyErrorCommand;
@@ -46,7 +46,7 @@ public class RequestTask implements Runnable {
             Logger.sendMessage(line);
             String ret = parallelCache.get(line);
             if(ret == null){
-                CommandConccurency command;
+                ConcurrencyCommand command;
                 String[] commandData = line.split(";");
                 System.err.println("Command: " + commandData[0]);
                 switch(commandData[0]){

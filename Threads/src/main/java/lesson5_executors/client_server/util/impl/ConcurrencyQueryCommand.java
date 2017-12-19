@@ -4,13 +4,12 @@ package lesson5_executors.client_server.util.impl;/**
  */
 
 import lesson5_executors.client_server.servers.concurrent.ConcurrentServer;
-import lesson5_executors.client_server.util.Command;
-import lesson5_executors.client_server.util.CommandConccurency;
+import lesson5_executors.client_server.util.ConcurrencyCommand;
 import lesson5_executors.client_server.wdi.WDIDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConcurrencyQueryCommand extends CommandConccurency {
+public class ConcurrencyQueryCommand extends ConcurrencyCommand {
     private static final Logger logger = LoggerFactory.getLogger(ConcurrencyQueryCommand.class);
 
     public ConcurrencyQueryCommand(String[] commandData, final ConcurrentServer server) {

@@ -2,7 +2,7 @@
  * @author Sergey Zhernovoy
  * create on 04.09.2017.
 
-Gonzalez J.F. - Mastering Concurrency Programming with Java 8 - 2016.pdf (англ) V 73
+Gonzalez J.F. - Mastering Concurrency Programming with Java 8 - 2016.pdf (англ) V 75
 
 
 1) a class is thread safe when it continues to behave correctly when accessed from
