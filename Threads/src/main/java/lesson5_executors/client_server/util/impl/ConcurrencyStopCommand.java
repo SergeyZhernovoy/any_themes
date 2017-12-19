@@ -4,11 +4,11 @@ package lesson5_executors.client_server.util.impl;/**
  */
 
 import lesson5_executors.client_server.servers.concurrent.ConcurrentServer;
-import lesson5_executors.client_server.util.CommandConccurency;
+import lesson5_executors.client_server.util.ConcurrencyCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ConcurrencyStopCommand extends CommandConccurency {
+public class ConcurrencyStopCommand extends ConcurrencyCommand {
     private static final Logger logger = LoggerFactory.getLogger(ConcurrencyStopCommand.class);
 
     public ConcurrencyStopCommand(String[] commandData, ConcurrentServer server) {
