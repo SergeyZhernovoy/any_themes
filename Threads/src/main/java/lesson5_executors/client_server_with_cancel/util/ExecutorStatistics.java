@@ -33,6 +33,9 @@ public class ExecutorStatistics {
     public String toString() {
         return "Executed tasks: " + this.getTasks() + ". Execution time=" + this.getTimes();
     }
+
+    public void addExecutionTime(long executionTime) {
+    }
 }
 
     

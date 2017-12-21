@@ -19,7 +19,7 @@ public class ServerTask<V> extends FutureTask<V> implements Comparable<ServerTas
      * @param command the runnable task
      * @throws NullPointerException if the runnable is null
      */
-    public ServerTask(Command command) {
+    public ServerTask(Runnable runnable,Command command) {
         super(command, null);
         this.command = command;
     }

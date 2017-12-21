@@ -78,6 +78,10 @@ public class Command implements TaskExecute, ParamConnection, Runnable, Comparab
     public int compareTo(Command command) {
         return command.compareTo(command);
     }
+
+    public String getUsername() {
+        return null;
+    }
 }
 
     
