@@ -1,5 +1,7 @@
-package lesson5_executors.client_server_with_cancel.util;
+package lesson5_executors.client_server_with_cancel.server.executor;
 
+
+import lesson5_executors.client_server_with_cancel.util.Command;
 
 import java.io.IOException;
 import java.io.PrintWriter;

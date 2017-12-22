@@ -3,11 +3,22 @@ package lesson5_executors.client_server_with_cancel.util.impl;/**
  * create on 19.12.2017.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lesson5_executors.client_server_with_cancel.server.Server;
+import lesson5_executors.client_server_with_cancel.util.AbstractCommand;
 
-public class StopCommand {
-    private static final Logger logger = LoggerFactory.getLogger(StopCommand.class);
+import java.net.Socket;
+
+public class StopCommand extends AbstractCommand {
+    public StopCommand(String[] command, Socket socket, Server server) {
+        super(command, socket, server);
+        setCacheable(false);
+    }
+
+    @Override
+    public String execute() {
+        this.server.shutdown();
+        return "Server stopped";
+    }
 }
 
     

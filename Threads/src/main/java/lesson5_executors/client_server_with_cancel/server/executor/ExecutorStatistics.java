@@ -1,4 +1,4 @@
-package lesson5_executors.client_server_with_cancel.util;/**
+package lesson5_executors.client_server_with_cancel.server.executor;/**
  * @author Sergey Zhernovoy
  * create on 19.12.2017.
  */
@@ -13,15 +13,15 @@ public class ExecutorStatistics {
     private AtomicLong executionTime = new AtomicLong(0L);
     private AtomicInteger numTasks = new AtomicInteger(0);
 
-    public long getTimes() {
+    public long getExecutionTime() {
         return executionTime.get();
     }
 
-    public void addTime(long time) {
+    public void addExecutionTime(long time) {
         this.executionTime.addAndGet(time);
     }
 
-    public int getTasks() {
+    public int getNumTasks() {
         return numTasks.get();
     }
 
@@ -31,11 +31,9 @@ public class ExecutorStatistics {
 
     @Override
     public String toString() {
-        return "Executed tasks: " + this.getTasks() + ". Execution time=" + this.getTimes();
+        return "Executed tasks: " + this.getNumTasks() + ". Execution time=" + this.getExecutionTime();
     }
 
-    public void addExecutionTime(long executionTime) {
-    }
 }
 
     

@@ -1,9 +1,11 @@
-package lesson5_executors.client_server_with_cancel.util;
+package lesson5_executors.client_server_with_cancel.server.executor;
 
 import lesson5_executors.client_server.util.logger.Logger;
 import lesson5_executors.client_server_with_cancel.server.Server;
+import lesson5_executors.client_server_with_cancel.util.Command;
 
 import java.util.Date;
+import java.util.Map.Entry;
 import java.util.concurrent.*;
 
 /**
@@ -19,6 +21,7 @@ public class ServerExecutor extends ThreadPoolExecutor {
     private static int MAXIMUM_POOL_SIZE = Runtime.getRuntime().availableProcessors();
     private static long KEEP_ALIVE_TIME = 10;
     private static RejectedTaskController REJECTED_TASK_CONTROLLER = new RejectedTaskController();
+    private final Server server;
 
 
     /**
@@ -28,10 +31,11 @@ public class ServerExecutor extends ThreadPoolExecutor {
      * methods instead of this general purpose constructor.
      * @throws NullPointerException     if {@code workQueue} is null
      */
-    public ServerExecutor() {
+    public ServerExecutor(final Server server) {
         super(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new PriorityBlockingQueue<>());
         this.startTimes = new ConcurrentHashMap<>();
         this.executorStatistics = new ConcurrentHashMap<>();
+        this.server = server;
     }
 
     /**
@@ -65,14 +69,14 @@ public class ServerExecutor extends ThreadPoolExecutor {
                 Date startDate = startTimes.remove(r);
                 Date endDate = new Date();
                 long executionTime = endDate.getTime() - startDate.getTime();
-                ExecutorStatistics statistics = executorStatistics.computeIfAbsent(command.getUsername(),n->new ExecutorStatistics());
+                ExecutorStatistics statistics = executorStatistics.computeIfAbsent(command.getUserName(),n->new ExecutorStatistics());
                 statistics.addExecutionTime(executionTime);
                 statistics.addTask();
-                Server.finishTask(command.getUsername(),command);
+                this.server.finishTask(command.getUserName(),command);
             } else {
                 String message = "The task"
                         + command.hashCode() +  " of user"
-                        + command.getUsername()+ " has been cancelled.";
+                        + command.getUserName()+ " has been cancelled.";
                 Logger.sendMessage(message);
             }
         } else {
@@ -83,7 +87,17 @@ public class ServerExecutor extends ThreadPoolExecutor {
 
     @Override
     protected <T> RunnableFuture<T> newTaskFor(Runnable runnable, T value) {
-        return new ServerTask<T>(runnable);
+        return new ServerTask<T>((Command) runnable);
+    }
+
+    public void writeStatistics() {
+
+        for(Entry<String,ExecutorStatistics> entry : executorStatistics.entrySet()){
+            String user = entry.getKey();
+            ExecutorStatistics stats = entry.getValue();
+            Logger.sendMessage(user+": "+ stats);
+        }
+
     }
 }
 

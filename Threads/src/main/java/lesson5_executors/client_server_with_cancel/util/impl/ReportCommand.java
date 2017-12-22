@@ -3,11 +3,21 @@ package lesson5_executors.client_server_with_cancel.util.impl;/**
  * create on 19.12.2017.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lesson5_executors.client_server_with_cancel.server.Server;
+import lesson5_executors.client_server_with_cancel.util.AbstractCommand;
 
-public class ReportCommand {
-    private static final Logger logger = LoggerFactory.getLogger(ReportCommand.class);
+import java.net.Socket;
+
+public class ReportCommand extends AbstractCommand{
+
+    public ReportCommand(String[] command, Socket socket, Server server) {
+        super(command, socket, server);
+    }
+
+    @Override
+    public String execute() {
+        return dao.report(command[3]);
+    }
 }
 
     
