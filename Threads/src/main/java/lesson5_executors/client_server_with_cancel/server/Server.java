@@ -156,7 +156,11 @@ public class Server {
         userTasks.remove(command);
         String message = "Task with code " + command.hashCode() + " has finished";
         Logger.sendMessage(message);
+    }
 
+    public static void main(String[] args) throws IOException {
+        Server server = new Server();
+        server.startServer();
     }
 }
 

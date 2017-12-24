@@ -69,32 +69,32 @@ public class RequestTask implements Runnable{
                         switch (commandData[0]) {
                             case "q":
                                 System.out.println("Query");
-                                command = new QueryCommand(clientSocket, commandData);
+                                command = new QueryCommand(commandData, clientSocket,server);
                                 break;
                             case "r":
                                 System.out.println("Report");
-                                command = new ReportCommand(clientSocket, commandData);
+                                command = new ReportCommand(commandData, clientSocket,server);
                                 break;
                             case "s":
                                 System.out.println("Status");
-                                command = new StatusCommand(executor, clientSocket, commandData);
+                                command = new StatusCommand(commandData, clientSocket,server,executor);
                                 break;
                             case "z":
                                 System.out.println("Stop");
-                                command = new StopCommand(clientSocket, commandData);
+                                command = new StopCommand(commandData, clientSocket,server);
                                 break;
                             case "c":
                                 System.out.println("Cancel");
-                                command = new CancelCommand(clientSocket, commandData);
+                                command = new CancelCommand(commandData,clientSocket,server);
                                 break;
                             default:
                                 System.out.println("Error");
-                                command = new ErrorCommand(clientSocket, commandData);
+                                command = new ErrorCommand(commandData, clientSocket,server);
                                 break;
                         }
 
                         ServerTask<?> controller = (ServerTask<?>)executor.submit(command);
-                        storeContoller(command.getUserName(), controller, command);
+                        storeController(command.getUserName(), controller, command);
                     } else {
                         PrintWriter out = new PrintWriter(clientSocket.getOutputStream(),true);
                         out.println(ret);
@@ -110,7 +110,7 @@ public class RequestTask implements Runnable{
         }
     }
 
-    private void storeContoller(String userName, ServerTask<?> controller, Command command) {
+    private void storeController(String userName, ServerTask<?> controller, Command command) {
         taskController.computeIfAbsent(userName, k -> new ConcurrentHashMap<>()).put(command, controller);
     }
 

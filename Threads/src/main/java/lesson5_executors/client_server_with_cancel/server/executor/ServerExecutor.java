@@ -32,7 +32,7 @@ public class ServerExecutor extends ThreadPoolExecutor {
      * @throws NullPointerException     if {@code workQueue} is null
      */
     public ServerExecutor(final Server server) {
-        super(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new PriorityBlockingQueue<>());
+        super(CORE_POOL_SIZE, MAXIMUM_POOL_SIZE, KEEP_ALIVE_TIME, TimeUnit.SECONDS, new PriorityBlockingQueue<>(),REJECTED_TASK_CONTROLLER);
         this.startTimes = new ConcurrentHashMap<>();
         this.executorStatistics = new ConcurrentHashMap<>();
         this.server = server;
