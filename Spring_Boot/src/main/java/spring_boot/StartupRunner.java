@@ -1,4 +1,4 @@
-package spring_boot.bookpub;/**
+package spring_boot;/**
  * @author Sergey Zhernovoy
  * create on 20.11.2017.
  */
@@ -49,7 +49,7 @@ public class StartupRunner implements CommandLineRunner {
         Publisher publisher = new Publisher("Pact");
         publisherRepository.save(publisher);
 
-        Book book =new Book("978-1-78528-415-1","Spring Boot Recipes","This book about Spring Boot",author,publisher);
+        Book book =new Book("978-1-78528-415-1","Spring Boot Recipes",author,publisher);
         bookRepository.save(book);
 
     }

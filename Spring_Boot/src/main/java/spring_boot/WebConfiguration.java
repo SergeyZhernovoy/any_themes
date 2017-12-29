@@ -1,4 +1,4 @@
-package spring_boot.bookpub;/**
+package spring_boot;/**
  * @author Sergey Zhernovoy
  * create on 22.11.2017.
  */

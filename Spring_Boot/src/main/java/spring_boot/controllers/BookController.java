@@ -5,7 +5,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import spring_boot.entity.Book;
 import spring_boot.entity.Isbn;
-import spring_boot.entity.Reviewers;
+import spring_boot.entity.Reviewer;
 import spring_boot.repositories.BookRepository;
 import spring_boot.utils.IsbnEditor;
 
@@ -39,7 +39,7 @@ public class BookController {
     }
 
     @RequestMapping(value = "/{isbn}/reviewers", method = RequestMethod.GET)
-    public List<Reviewers> getAllReviewers(@PathVariable("isbn") Book book){
+    public List<Reviewer> getAllReviewers(@PathVariable("isbn") Book book){
         return book.getReviewers();
     }
 

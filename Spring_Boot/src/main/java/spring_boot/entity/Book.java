@@ -26,9 +26,9 @@ public class Book {
     @ManyToOne
     private Publisher publisher;
     @ManyToMany
-    private List<Reviewers> reviewers;
+    private List<Reviewer> reviewers;
 
-    public Book(String isbn, String title, String description, Author author, Publisher publisher) {
+    public Book(String isbn, String title, Author author, Publisher publisher) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;
