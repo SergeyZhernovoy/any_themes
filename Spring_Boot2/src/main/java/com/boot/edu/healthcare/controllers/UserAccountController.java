@@ -3,11 +3,27 @@ package com.boot.edu.healthcare.controllers;/**
  * create on 31.12.2017.
  */
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+@RequestMapping("/account/*")
 public class UserAccountController {
-    private static final Logger logger = LoggerFactory.getLogger(UserAccountController.class);
+
+    @RequestMapping
+    public String login(){
+        return "login";
+    }
+
+    @GetMapping("/signup")
+    public String signup(){
+        return "signup";
+    }
+
+    @GetMapping("/forgotpassword")
+    public String forgotpassword(){
+        return "forgotpassword";
+    }
+
 }
 
     
