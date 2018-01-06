@@ -1,0 +1,40 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.9.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.edu'
+version = '1.0.0.0'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-jpa
+	//compile ('org.springframework.boot', name: 'spring-boot-starter-data-jpa')
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
+	//compile ('org.springframework.boot', name: 'spring-boot-starter-web')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+	//compile ('org.springframework.boot', name: 'spring-boot-starter-thymeleaf')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+	//compile ('org.springframework.boot', name: 'spring-boot-starter-jdbc')
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
