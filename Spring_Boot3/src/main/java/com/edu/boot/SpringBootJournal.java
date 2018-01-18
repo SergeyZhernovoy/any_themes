@@ -12,7 +12,9 @@ import org.springframework.context.annotation.Bean;
  * create on 05.01.2018.
  */
 
-@SpringBootApplication
+import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfiguration;
+
+@SpringBootApplication(exclude = {ActiveMQAutoConfiguration.class})
 public class SpringBootJournal {
 
     @Bean

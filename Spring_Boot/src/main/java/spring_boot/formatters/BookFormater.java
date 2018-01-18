@@ -13,10 +13,14 @@ import spring_boot.repositories.BookRepository;
 import java.text.ParseException;
 import java.util.Locale;
 
-@AllArgsConstructor
+
 public class BookFormater implements Formatter<Book>{
     private static final Logger logger = LoggerFactory.getLogger(BookFormater.class);
     private BookRepository bookRepository;
+
+    public BookFormater(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     @Override
     public Book parse(String bookIdentifier, Locale locale) throws ParseException {
