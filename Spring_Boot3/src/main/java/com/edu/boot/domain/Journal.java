@@ -16,7 +16,7 @@ public class Journal {
     private String summary;
 
     @Transient
-    private SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+    private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
     public Journal(String title,String summary, String date) throws ParseException {
         this.title = title;
