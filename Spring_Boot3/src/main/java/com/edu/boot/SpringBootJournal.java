@@ -29,7 +29,7 @@ public class SpringBootJournal {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringBootJournal.class);
+        SpringApplication.run(SpringBootJournal.class,args);
     }
 
 }
