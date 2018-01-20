@@ -1,7 +1,10 @@
 package com.edu.boot.repository;
 
-import com.edu.boot.domain.Journal;
+import com.edu.boot.domain.JournalEntry;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface JournalRepositroy extends JpaRepository<Journal,Long> {
+import javax.transaction.Transactional;
+
+@Transactional
+public interface JournalRepositroy extends JpaRepository<JournalEntry,Long> {
 }

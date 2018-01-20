@@ -1,12 +1,17 @@
 package com.edu.boot.domain;
 
+import com.edu.boot.utils.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import javax.persistence.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
-public class Journal {
+@Table(name = "entry")
+public class JournalEntry {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,13 +23,13 @@ public class Journal {
     @Transient
     private SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
-    public Journal(String title,String summary, String date) throws ParseException {
+    public JournalEntry(String title, String summary, String date) throws ParseException {
         this.title = title;
         this.created = format.parse(date);
         this.summary = summary;
     }
 
-    public Journal() {
+    public JournalEntry() {
         this.title = "New";
         this.created = new Date();
         this.summary = "";
@@ -46,6 +51,7 @@ public class Journal {
         this.title = title;
     }
 
+    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getCreated() {
         return created;
     }
@@ -62,6 +68,7 @@ public class Journal {
         this.summary = summary;
     }
 
+    @JsonIgnore
     public String getCreatedAsShort(){
         return format.format(created);
     }

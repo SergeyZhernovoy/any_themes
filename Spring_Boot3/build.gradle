@@ -33,7 +33,17 @@ dependencies {
 	//compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-thymeleaf
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-rest
+    runtime group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest', version: '1.5.9.RELEASE'
+	// https://mvnrepository.com/artifact/org.postgresql/postgresql
+	compile group: 'org.postgresql', name: 'postgresql', version: '42.1.4'
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '1.5.9.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.data/spring-data-rest-hal-browser
+	compile group: 'org.springframework.data', name: 'spring-data-rest-hal-browser', version: '3.0.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.9.RELEASE'
+
+
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
