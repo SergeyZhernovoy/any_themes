@@ -1,9 +1,11 @@
 package stream_example;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toCollection;
 
 /**
  * Объект flatMap позволяет заменить значение  объектом Stream  и конкатенировать потоки
@@ -13,7 +15,7 @@ public class FlatMapExample {
         return Stream
                 .of(array1,array2)
                 .flatMap(number->number.stream())
-                .collect(Collectors.toList());
+                .collect(toCollection(LinkedList::new));
     }
 
     public static void main(String[] args) {
