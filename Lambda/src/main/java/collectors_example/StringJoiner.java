@@ -40,6 +40,10 @@ public class StringJoiner {
         StringJoiner stringJoiner = new StringJoiner(artists);
         System.out.println(stringJoiner);
 
+        System.out.println("Это мой коллектор типа joiner");
+        String result = artists.stream().map(Artist::getName).collect(new StringCollector(" ,", " [","] "));
+        System.out.println(result);
+
     }
 
 }

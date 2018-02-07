@@ -1,25 +1,19 @@
 package collectors_example;
 
-import java.util.List;
-
 public class StringCombiner {
     private String delim;
     private String prefix;
     private String suffix;
-    private Boolean atStart;
     private StringBuilder builder = new StringBuilder();
 
     public StringCombiner(String delim, String prefix, String suffix) {
         this.delim = delim;
         this.prefix = prefix;
         this.suffix = suffix;
-        atStart = true;
     }
 
     public StringCombiner add(String element){
-        if(areAtStart()){
-            builder.append(prefix);
-        } else {
+        if(!areAtStart()){
             builder.append(delim);
         }
         builder.append(element);
@@ -27,20 +21,22 @@ public class StringCombiner {
     }
 
     public StringCombiner merge(StringCombiner other){
-        builder.append(other.builder);
+        if(!other.equals(this)){
+            if(!other.areAtStart() && !areAtStart()){
+                other.builder.insert(0,this.delim);
+            }
+            builder.append(other.builder);
+        }
+
         return this;
     }
 
     private Boolean areAtStart(){
-        Boolean start = atStart;
-        if(atStart){
-           this.atStart = false;
-        }
-        return start;
+        return builder.length() == 0;
     }
 
     @Override
     public String toString() {
-        return this.builder.toString();
+        return String.format("%s%s%s",prefix,this.builder.toString(),suffix);
     }
 }

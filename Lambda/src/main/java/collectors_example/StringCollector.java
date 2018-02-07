@@ -1,5 +1,6 @@
 package collectors_example;
 
+import java.util.Collections;
 import java.util.Set;
 import java.util.function.BiConsumer;
 import java.util.function.BinaryOperator;
@@ -12,6 +13,13 @@ public class StringCollector implements Collector<String, StringCombiner, String
     private String delim;
     private String prefix;
     private String suffix;
+    private Set<Characteristics> characteristics = Collections.emptySet();
+
+    public StringCollector(String delim, String prefix, String suffix){
+        this.delim = delim;
+        this.prefix = prefix;
+        this.suffix = suffix;
+    }
 
     @Override
     public Supplier<StringCombiner> supplier() {
@@ -30,11 +38,11 @@ public class StringCollector implements Collector<String, StringCombiner, String
 
     @Override
     public Function<StringCombiner, String> finisher() {
-        return null;
+        return StringCombiner::toString;
     }
 
     @Override
     public Set<Characteristics> characteristics() {
-        return null;
+        return this.characteristics;
     }
 }
