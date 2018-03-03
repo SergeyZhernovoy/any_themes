@@ -15,3 +15,10 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+  h2:
+    console.enabled: true
+
+#liquibase change log file
+
+liquibase:
+  change-log: classpath:db/db.changelog-master.xml
