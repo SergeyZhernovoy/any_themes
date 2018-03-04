@@ -1,4 +1,4 @@
 package ru.database.domain;
 
-public class Teacher {
+public class Teacher extends Person {
 }

@@ -6,7 +6,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath "org.liquibase:liquibase-gradle-plugin:3.5.5"
+		classpath "org.liquibase:liquibase-gradle-plugin:1.2.4"
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }

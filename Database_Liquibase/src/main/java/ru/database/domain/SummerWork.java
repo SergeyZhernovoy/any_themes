@@ -1,4 +1,4 @@
 package ru.database.domain;
 
-public class SummerWork {
+public class SummerWork extends Work {
 }

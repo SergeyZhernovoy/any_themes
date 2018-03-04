@@ -1,4 +1,4 @@
 package ru.database.domain;
 
-public class HomeWork {
+public class HomeWork extends Work{
 }
