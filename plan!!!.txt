@@ -5,5 +5,5 @@
 Результат изучения паттернов.  Изучены паттерны декоратор, стратегия, одиночка, фабрика , обозреватель
 
 26/02/2018 - 12/03/2018 Изучаем Liquabase, Hibernate ORM,  Postgresql, SQL
-/** https://www.youtube.com/watch?v=7VeODrRkHXg */
+/** https://www.youtube.com/watch?v=7VeODrRkHXg */     1
 
