@@ -1,7 +1,7 @@
 spring:
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/database-edu
+    url: jdbc:postgresql://localhost:5432/database-edu-src
     username: postgres
     password:
     driver-class-name: org.postgresql.Driver
@@ -21,5 +21,4 @@ spring:
 #liquibase change log file
 
 liquibase:
-  change-log: classpath:db/db.changelog-master.xml
-  enabled: true
+  enabled: false
