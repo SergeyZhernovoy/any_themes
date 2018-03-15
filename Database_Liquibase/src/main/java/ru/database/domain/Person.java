@@ -1,8 +1,6 @@
 package ru.database.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -15,7 +13,8 @@ import javax.persistence.SequenceGenerator;
 
 @Entity
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Inheritance(strategy = InheritanceType.JOINED)
 @SequenceGenerator(name = "gen_person",sequenceName = "seq_person")
 public class Person {

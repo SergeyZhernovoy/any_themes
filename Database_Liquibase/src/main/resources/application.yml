@@ -3,7 +3,7 @@ spring:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/database-edu
     username: postgres
-    password:
+    password: 1
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql

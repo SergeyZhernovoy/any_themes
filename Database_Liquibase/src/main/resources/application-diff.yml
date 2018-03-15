@@ -3,13 +3,13 @@ spring:
     platform: postgres
     url: jdbc:postgresql://localhost:5432/source
     username: postgres
-    password:
+    password: 1
     driver-class-name: org.postgresql.Driver
   jpa:
     database: postgresql
     show-sql: true
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
       naming:
         strategy: org.hibernate.cfg.ImprovedNamingStrategy
     properties:

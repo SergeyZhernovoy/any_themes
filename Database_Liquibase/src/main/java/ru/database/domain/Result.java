@@ -1,17 +1,13 @@
 package ru.database.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.annotation.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
@@ -20,8 +16,14 @@ public class Result {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Work refWork;
+	@OneToOne
+	@JoinColumn(name = "id_work")
+    private LaboratoryWork refWork;
     private Integer estimate;
+    @OneToOne
+    @JoinColumn(name = "id_issuer")
     private Person issueOfWork;
+    @OneToOne
+    @JoinColumn(name = "id_matcher")
     private Person matchOfWork;
 }
