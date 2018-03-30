@@ -16,8 +16,6 @@
     </properties>
 
     <modules>
-
-        <module>PartIV</module>
         <module>Spring_Basic</module>
         <module>Core</module>
         <module>Reflection</module>

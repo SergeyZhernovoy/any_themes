@@ -1,0 +1,1 @@
+Quick Start Guide to JavaFX.pdf - читаю
