@@ -1,0 +1,12 @@
+.label {
+    -fx-text-fill: red;
+    -fx-font: bold 14pt "Courier";
+}
+
+root {
+    display: block;
+}
+
+.rotate {
+    -fx-rotate: 90;
+}

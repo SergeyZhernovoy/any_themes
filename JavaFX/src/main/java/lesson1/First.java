@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class JavaFXForBeginners extends Application {
+public class First extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
@@ -16,7 +16,7 @@ public class JavaFXForBeginners extends Application {
 
 	@Override
 	public void start(Stage primaryStage) throws IOException {
-		Parent root = FXMLLoader.load(Sample.class.getResource("fxml/Sample.fxml"));
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fxml/Sample.fxml"));
 		primaryStage.setScene(new Scene(root));
 		primaryStage.show();
 	}
