@@ -5,6 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
@@ -13,7 +14,9 @@ import java.math.BigDecimal;
  */
 
 @XmlRootElement
-public class Product {
+public class Product implements Serializable {
+    private static final long serialVersionUID = 756084375300720360L;
+
     private String productId;
     private String name;
     private BigDecimal unitPrice;
@@ -34,6 +37,7 @@ public class Product {
     }
 
     public Product() {
+        super();
     }
 
     public String getProductId() {
