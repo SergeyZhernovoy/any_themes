@@ -3,54 +3,44 @@ package webstore.domain.repository.impl;/**
  * create on 16.09.2017.
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 import webstore.domain.Customer;
 import webstore.domain.repository.CustomerRepository;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class InMemoryCustomerRepository implements CustomerRepository {
 
-    private List<Customer> customers;
-
-    public InMemoryCustomerRepository() {
-        this.customers = new ArrayList<>();
-        Customer cust1 = new Customer();
-        cust1.setAddress("Penza");
-        cust1.setCustomerId("A123");
-        cust1.setName("Sergey");
-        cust1.setNoOrdersMade(true);
-        this.customers.add(cust1);
-
-        cust1 = new Customer();
-        cust1.setAddress("Kuzneck");
-        cust1.setCustomerId("A124");
-        cust1.setName("Petr");
-        cust1.setNoOrdersMade(true);
-        this.customers.add(cust1);
-
-        cust1 = new Customer();
-        cust1.setAddress("Brjansk");
-        cust1.setCustomerId("A126");
-        cust1.setName("Kolja");
-        cust1.setNoOrdersMade(true);
-        this.customers.add(cust1);
-
-        cust1 = new Customer();
-        cust1.setAddress("Moskva");
-        cust1.setCustomerId("A127");
-        cust1.setName("Olga");
-        cust1.setNoOrdersMade(true);
-        this.customers.add(cust1);
-
-    }
+    @Autowired
+    private NamedParameterJdbcTemplate jdbcTemplate;
 
     @Override
     public List<Customer> getAllCustomers() {
-        return this.customers;
+        Map<String, Object> params = new HashMap<>();
+        List<Customer> result = jdbcTemplate.query("SELECT * FROM customers", params, new ProductMapper());
+        return result;
     }
+
+    private static final class ProductMapper implements RowMapper<Customer> {
+        public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
+            Customer customer = new Customer();
+            customer.setCustomerId(rs.getString("ID"));
+            customer.setName(rs.getString("NAME"));
+            customer.setAddress(rs.getString("ADDRESS"));
+            customer.setNoOrdersMade(rs.getBoolean("NO_ORDERS_MADE"));
+            return customer;
+        }
+    }
+
 }
 
     

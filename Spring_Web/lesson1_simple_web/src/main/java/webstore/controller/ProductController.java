@@ -30,24 +30,31 @@ import java.util.Map;
 public class ProductController {
 
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
-    @InitBinder
-    public void initialiseBinder(WebDataBinder binder){
-        binder.setDisallowedFields("unitsInOrder","discounted");
-        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
-    }
-
-    @RequestMapping(value = "/{category}/{price}",method = RequestMethod.GET)
-    public String getFilteredGrids(@PathVariable String category,@MatrixVariable(pathVar = "price") Map<String,Integer> range,@RequestParam String manufacturer){
-        return "products";
-    }
-
+//    @InitBinder
+//    public void initialiseBinder(WebDataBinder binder){
+//        binder.setDisallowedFields("unitsInOrder","discounted");
+//        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
+//    }
+//
+//    @RequestMapping(value = "/{category}/{price}",method = RequestMethod.GET)
+//    public String getFilteredGrids(@PathVariable String category,@MatrixVariable(pathVar = "price") Map<String,Integer> range,@RequestParam String manufacturer){
+//        return "products";
+//    }
+//
     @RequestMapping("")
     public String listProducts(Model model){
         model.addAttribute("products",productService.getAllProducts());
         return "products";
     }
+
+    @RequestMapping("/update/stock")
+    public String updateStock(Model model){
+        productService.updateAllStock();
+        return "redirect:/products";
+    }
+
 
     @RequestMapping("/{category}")
     public ModelAndView getProductsByCategory(@PathVariable String category, ModelAndView modelAndView){
@@ -60,8 +67,8 @@ public class ProductController {
         return modelAndView;
     }
 
-    @RequestMapping("/filter/{ByCriteria}")
-    public String getProductsByFilter(@MatrixVariable(pathVar = "ByCriteria") Map<String,List<String>> filter,  Model model){
+    @RequestMapping("/filter/{params}")
+    public String getProductsByFilter(@MatrixVariable(pathVar = "params") Map<String,List<String>> filter,  Model model){
         model.addAttribute("products",productService.getProductsByFilter(filter));
         return "products";
     }
@@ -81,34 +88,34 @@ public class ProductController {
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result, HttpServletRequest request){
-        String[] suppressedField = result.getSuppressedFields();
-        if(suppressedField.length > 0){
-            throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
-        }
+//        String[] suppressedField = result.getSuppressedFields();
+//        if(suppressedField.length > 0){
+//            throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
+//        }
 
-        MultipartFile image = newProduct.getProductImage();
-        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-        if(image != null && !image.isEmpty()){
-            try{
-                image.transferTo(new File(rootDirectory + "resources\\images\\"+newProduct.getProductId()+".png"));
-            } catch (IOException e) {
-                throw new RuntimeException("Product Image saving failed",e);
-            }
-        }
+//        MultipartFile image = newProduct.getProductImage();
+//        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+//        if(image != null && !image.isEmpty()){
+//            try{
+//                image.transferTo(new File(rootDirectory + "resources\\images\\"+newProduct.getProductId()+".png"));
+//            } catch (IOException e) {
+//                throw new RuntimeException("Product Image saving failed",e);
+//            }
+//        }
 
         productService.addProduct(newProduct);
         return "redirect:/products";
     }
-
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ModelAndView handlerException(HttpServletRequest request, ProductNotFoundException exception){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("invalidProductId",exception.getProductId());
-        modelAndView.addObject("exception",exception);
-        modelAndView.addObject("url",request.getRequestURL()+"?"+request.getQueryString());
-        modelAndView.setViewName("productNotFound");
-        return modelAndView;
-    }
+//
+//    @ExceptionHandler(ProductNotFoundException.class)
+//    public ModelAndView handlerException(HttpServletRequest request, ProductNotFoundException exception){
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.addObject("invalidProductId",exception.getProductId());
+//        modelAndView.addObject("exception",exception);
+//        modelAndView.addObject("url",request.getRequestURL()+"?"+request.getQueryString());
+//        modelAndView.setViewName("productNotFound");
+//        return modelAndView;
+//    }
 
 
 

@@ -17,11 +17,22 @@ import java.util.Set;
 public class ProductServiceImpl implements ProductService {
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     @Override
     public List<Product> getAllProducts() {
         return this.productRepository.getAllProducts();
+    }
+
+    @Override
+    public void updateAllStock() {
+        List<Product> products = productRepository.getAllProducts();
+        for (Product product : products) {
+            if (product.getUnitsInStock() < 500) {
+                productRepository.updateStock(product.getProductId(),
+                        product.getUnitsInStock() + 1000);
+            }
+        }
     }
 
     @Override
@@ -35,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Set<Product> getProductsByFilter(Map<String, List<String>> filter) {
+    public List<Product> getProductsByFilter(Map<String, List<String>> filter) {
         return this.productRepository.getProductsByFilter(filter);
     }
 
@@ -43,7 +54,6 @@ public class ProductServiceImpl implements ProductService {
     public void addProduct(Product product) {
         this.productRepository.addProduct(product);
     }
-
 
 }
 

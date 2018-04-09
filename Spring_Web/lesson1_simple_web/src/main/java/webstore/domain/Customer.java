@@ -1,9 +1,14 @@
-package webstore.domain;/**
+package webstore.domain;
+
+import java.io.Serializable;
+
+/**
  * @author Sergey Zhernovoy
  * create on 16.09.2017.
  */
 
-public class Customer {
+public class Customer implements Serializable {
+    private static final long serialVersionUID = 5240270225770833397L;
     private  String customerId;
     private String name;
     private String address;

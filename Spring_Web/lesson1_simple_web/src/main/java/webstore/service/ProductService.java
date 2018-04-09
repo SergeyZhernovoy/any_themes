@@ -11,13 +11,16 @@ import java.util.Set;
  * create on 16.09.2017.
  */
 public interface ProductService {
+
     List<Product> getAllProducts();
+
+    void updateAllStock();
 
     Product getProductById(String productId);
 
     List<Product> getProductByCategory(String category);
 
-    Set<Product> getProductsByFilter(Map<String,List<String>> filter);
+    List<Product> getProductsByFilter(Map<String,List<String>> filter);
 
     void addProduct(Product product);
 
