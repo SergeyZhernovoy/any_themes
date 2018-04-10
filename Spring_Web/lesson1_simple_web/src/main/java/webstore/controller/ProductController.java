@@ -32,17 +32,12 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
-//    @InitBinder
-//    public void initialiseBinder(WebDataBinder binder){
-//        binder.setDisallowedFields("unitsInOrder","discounted");
-//        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
-//    }
-//
-//    @RequestMapping(value = "/{category}/{price}",method = RequestMethod.GET)
-//    public String getFilteredGrids(@PathVariable String category,@MatrixVariable(pathVar = "price") Map<String,Integer> range,@RequestParam String manufacturer){
-//        return "products";
-//    }
-//
+    @InitBinder
+    public void initialiseBinder(WebDataBinder binder){
+        binder.setDisallowedFields("unitsInOrder","discounted");
+        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
+    }
+
     @RequestMapping("")
     public String listProducts(Model model){
         model.addAttribute("products",productService.getAllProducts());
@@ -54,7 +49,6 @@ public class ProductController {
         productService.updateAllStock();
         return "redirect:/products";
     }
-
 
     @RequestMapping("/{category}")
     public ModelAndView getProductsByCategory(@PathVariable String category, ModelAndView modelAndView){
@@ -88,10 +82,10 @@ public class ProductController {
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
     public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result, HttpServletRequest request){
-//        String[] suppressedField = result.getSuppressedFields();
-//        if(suppressedField.length > 0){
-//            throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
-//        }
+        String[] suppressedField = result.getSuppressedFields();
+        if(suppressedField.length > 0){
+            throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
+        }
 
 //        MultipartFile image = newProduct.getProductImage();
 //        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
