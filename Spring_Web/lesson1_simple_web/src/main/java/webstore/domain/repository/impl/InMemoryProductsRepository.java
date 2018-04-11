@@ -4,6 +4,7 @@ package webstore.domain.repository.impl;/**
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -61,7 +62,11 @@ public class InMemoryProductsRepository implements ProductRepository {
         String SQL = "SELECT * FROM PRODUCTS WHERE id =:id";
         Map<String, Object> params = new HashMap<>();
         params.put("id", productId);
-        return jdbcTemplate.queryForObject(SQL, params, new ProductMapper());
+        try{
+            return jdbcTemplate.queryForObject(SQL, params, new ProductMapper());
+        } catch (DataAccessException exc) {
+            throw new ProductNotFoundException(productId);
+        }
     }
 
     @Override

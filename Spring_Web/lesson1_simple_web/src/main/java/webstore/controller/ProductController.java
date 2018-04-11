@@ -35,7 +35,8 @@ public class ProductController {
     @InitBinder
     public void initialiseBinder(WebDataBinder binder){
         binder.setDisallowedFields("unitsInOrder","discounted");
-        binder.setAllowedFields("productId","name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
+        binder.setAllowedFields("productId",
+                                 "name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
     }
 
     @RequestMapping("")
@@ -87,32 +88,29 @@ public class ProductController {
             throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));
         }
 
-//        MultipartFile image = newProduct.getProductImage();
-//        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-//        if(image != null && !image.isEmpty()){
-//            try{
-//                image.transferTo(new File(rootDirectory + "resources\\images\\"+newProduct.getProductId()+".png"));
-//            } catch (IOException e) {
-//                throw new RuntimeException("Product Image saving failed",e);
-//            }
-//        }
+        MultipartFile image = newProduct.getProductImage();
+        String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+        if(image != null && !image.isEmpty()){
+            try{
+                image.transferTo(new File(rootDirectory + "resources\\images\\"+newProduct.getProductId()+".png"));
+            } catch (IOException e) {
+                throw new RuntimeException("Product Image saving failed",e);
+            }
+        }
 
         productService.addProduct(newProduct);
         return "redirect:/products";
     }
-//
-//    @ExceptionHandler(ProductNotFoundException.class)
-//    public ModelAndView handlerException(HttpServletRequest request, ProductNotFoundException exception){
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.addObject("invalidProductId",exception.getProductId());
-//        modelAndView.addObject("exception",exception);
-//        modelAndView.addObject("url",request.getRequestURL()+"?"+request.getQueryString());
-//        modelAndView.setViewName("productNotFound");
-//        return modelAndView;
-//    }
 
-
-
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ModelAndView handlerException(HttpServletRequest request, ProductNotFoundException exception){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("invalidProductId",exception.getProductId());
+        modelAndView.addObject("exception",exception);
+        modelAndView.addObject("url",request.getRequestURL()+"?"+request.getQueryString());
+        modelAndView.setViewName("productNotFound");
+        return modelAndView;
+    }
 }
 
     
