@@ -1,2 +1,5 @@
- Читаю Spring MVC Beginner's Guide.pdf стр 309
+ Читаю Spring MVC Beginner's Guide.pdf стр 457
  со спрринг секьюрити не получилось. Отдельная тема буду копаться в ней дополнительно
+
+ C:\Tools\Java\Jdk\bin>native2ascii.exe -encoding UTF-8 messages_ru.properties messages_ru.properties
+ для перекодирования в UTF-8

@@ -36,7 +36,15 @@ public class ProductController {
     public void initialiseBinder(WebDataBinder binder){
         binder.setDisallowedFields("unitsInOrder","discounted");
         binder.setAllowedFields("productId",
-                                 "name","unitPrice","manufactured","description","category","unitsInStock","condition","productImage");
+                                "name",
+                                "unitPrice",
+                                "manufactured",
+                                "description",
+                                "category",
+                                "unitsInStock",
+                                "condition",
+                                "productImage",
+                                "language");
     }
 
     @RequestMapping("")
