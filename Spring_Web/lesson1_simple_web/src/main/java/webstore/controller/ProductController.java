@@ -119,6 +119,12 @@ public class ProductController {
         modelAndView.setViewName("productNotFound");
         return modelAndView;
     }
+    
+    @RequestMapping("/invalidPromoCode")
+    public String invalidPromoCode() {
+        return "invalidPromoCode";
+    }
+    
 }
 
     

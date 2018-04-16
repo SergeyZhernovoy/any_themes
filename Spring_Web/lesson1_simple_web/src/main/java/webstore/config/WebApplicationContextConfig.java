@@ -10,6 +10,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
@@ -24,6 +25,7 @@ import org.springframework.web.servlet.view.xml.MarshallingView;
 import org.springframework.web.util.UrlPathHelper;
 import webstore.domain.Product;
 import webstore.intercepters.ProcessingTimeLogInterceptor;
+import webstore.intercepters.PromoCodeInterceptors;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -106,6 +108,8 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
 		localeChangeInterceptor.setParamName("language");
 		registry.addInterceptor(localeChangeInterceptor);
 		registry.addInterceptor(new ProcessingTimeLogInterceptor());
+		registry.addInterceptor(promoCodeInterceptors())
+				.addPathPatterns("/**/products/specialOffer");
 	}
 	
 	@Bean
@@ -122,5 +126,13 @@ public class WebApplicationContextConfig extends WebMvcConfigurerAdapter {
 		return reloadableResourceBundleMessageSource;
 	}
 	
+	@Bean
+	public HandlerInterceptor promoCodeInterceptors() {
+		PromoCodeInterceptors promoCodeInterceptors = new PromoCodeInterceptors();
+		promoCodeInterceptors.setPromoCode("OFF3R");
+		promoCodeInterceptors.setOfferRedirect("/products");
+		promoCodeInterceptors.setErrorRedirect("invalidPromoCode");
+		return promoCodeInterceptors;
+	}
 	
 }

@@ -18,6 +18,7 @@
     <section>
         <div class="pull-right" style="padding-right:50px">
             <a href="?language=en" >English</a>|<a href="?language=ru">Russian</a>
+            <a href="<c:url value="/logout"/>">logout</a>
         </div>
     </section>
     <section>
@@ -26,7 +27,6 @@
                 <h1>Products</h1>
                 <p>Add products</p>
             </div>
-            <%--<a href="<c:url value="/j_spring_security_logout" />" class="btn btndanger btn-mini pull-right">logout</a>--%>
         </div>
     </section>
     <section class="container">
