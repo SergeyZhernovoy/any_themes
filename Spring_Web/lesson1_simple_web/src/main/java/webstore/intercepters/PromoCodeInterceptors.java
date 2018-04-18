@@ -1,7 +1,5 @@
 package webstore.intercepters;
 
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.HttpServletRequest;
