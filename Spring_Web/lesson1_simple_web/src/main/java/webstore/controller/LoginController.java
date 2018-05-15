@@ -17,17 +17,6 @@ public class LoginController {
     public String doLogin(){
         return "login";
     }
-//
-//    @RequestMapping(value = "/loginfail",method = RequestMethod.GET)
-//    public String getLoginError(Model model){
-//        model.addAttribute("error","true");
-//        return "login";
-//    }
-//
-//    @RequestMapping(value = "/logout",method = RequestMethod.GET)
-//    public String doLogout(){
-//        return "login";
-//    }
 
 }
 

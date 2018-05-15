@@ -32,11 +32,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.access("hasRole('ADMIN')")
 				.antMatchers("/**/products/**")
 				.access("hasRole('USER')");
-		httpSecurity.csrf().disable();
 		httpSecurity.formLogin()
 				.loginPage("/login")
-				.usernameParameter("username")
-				.usernameParameter("password");
+				.usernameParameter("userId")
+				.passwordParameter("password");
 		httpSecurity.formLogin()
 				.defaultSuccessUrl("/products/add")
 				.failureUrl("/login?error");
@@ -44,6 +43,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessUrl("/login?logout");
 		httpSecurity.exceptionHandling()
 				.accessDeniedPage("/login?accessDenied");
-		
+		httpSecurity.csrf().disable();
 	}
 }

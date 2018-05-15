@@ -51,8 +51,8 @@
                                 </div>
                             </c:if>
                             <div class="input-group input-sm">
-                                <label class="input-group-addon" for="username"><i class="fa fa-user"></i> </label>
-                                <input class="form-control" id="username" placeholder="Enter username" name="username" type="text" required>
+                                <label class="input-group-addon" for="userId"><i class="fa fa-user"></i> </label>
+                                <input class="form-control" id="userId" placeholder="Enter username" name="userId" type="text" required>
                             </div>
                             <div class="input-group input-sm">
                                 <label class="input-group-addon" for="password"><i class="fa fa-lock"></i> </label>
