@@ -6,6 +6,8 @@ apply plugin: 'war'
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    // https://mvnrepository.com/artifact/org.hibernate/hibernate-validator
+    compile group: 'org.hibernate', name: 'hibernate-validator', version: '5.4.2.Final'
     // https://mvnrepository.com/artifact/org.springframework/spring-webmvc
     compile 'org.springframework:spring-webmvc:4.3.10.RELEASE'
     // https://mvnrepository.com/artifact/javax.servlet/jstl
