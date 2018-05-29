@@ -13,8 +13,10 @@ import webstore.domain.Product;
 import webstore.exception.NoProductsFoundUnderCategoryException;
 import webstore.exception.ProductNotFoundException;
 import webstore.service.ProductService;
+import webstore.validators.UnitsInStockValidator;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +33,9 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+    
+    @Autowired
+    private UnitsInStockValidator validator;
 
     @InitBinder
     public void initialiseBinder(WebDataBinder binder){
@@ -45,6 +50,7 @@ public class ProductController {
                                 "condition",
                                 "productImage",
                                 "language");
+        binder.setValidator(validator);
     }
 
     @RequestMapping("")
@@ -90,7 +96,12 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/add",method = RequestMethod.POST)
-    public String addNewProduct(@ModelAttribute("product") Product newProduct, BindingResult result, HttpServletRequest request){
+    public String addNewProduct(@ModelAttribute("product") @Valid Product newProduct, BindingResult result, HttpServletRequest request){
+        
+        if (result.hasErrors()) {
+            return "addProduct";
+        }
+        
         String[] suppressedField = result.getSuppressedFields();
         if(suppressedField.length > 0){
             throw new RuntimeException("Attempting to bind disallowed fields " + StringUtils.arrayToCommaDelimitedString(suppressedField));

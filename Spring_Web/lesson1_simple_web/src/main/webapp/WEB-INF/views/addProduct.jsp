@@ -31,6 +31,7 @@
     </section>
     <section class="container">
         <form:form modelAttribute="product" class="form-horizontal" enctype="multipart/form-data">
+            <form:errors path="*" cssClass="alert alert-danger" element="div"/>
             <fieldset>
                 <legend>Add new product</legend>
                 <div class="form-group">
@@ -39,6 +40,7 @@
                     </label>
                     <div class="col-lg-10">
                         <form:input path="productId" id="productId" type="text"></form:input>
+                        <form:errors path="productId" cssClass="text-danger"/>
                     </div>
                 </div>
 
