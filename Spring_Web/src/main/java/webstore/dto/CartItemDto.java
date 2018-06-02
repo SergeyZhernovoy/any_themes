@@ -8,11 +8,11 @@ public class CartItemDto implements Serializable {
 	private String id;
 	private String productId;
 	private int quantity;
-	
-	public CartItemDto(String id) {
+
+	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	public String getId() {
 		return id;
 	}
