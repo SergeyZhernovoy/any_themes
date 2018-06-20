@@ -1,118 +1,14 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
-                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
-                   http://www.liquibase.org/xml/ns/dbchangelog
-                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-1">
-        <createSequence sequenceName="seq_home_work"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-2">
-        <createSequence sequenceName="seq_lab_work"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-3">
-        <createSequence sequenceName="seq_person"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-4">
-        <createSequence sequenceName="seq_summer_work"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-5">
-        <createTable tableName="answers">
-            <column autoIncrement="true" name="id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="answers_pkey"/>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <changeSet author="Sergey Zhernovoy" id="1529501655382-1">
+        <createTable tableName="employeers">
+            <column name="id" type="INTEGER">
+                <constraints primaryKey="true" primaryKeyName="employeers_pkey"/>
             </column>
-            <column name="answer" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-6">
-        <createTable tableName="home_work">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="home_work_pkey"/>
-            </column>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="moment" type="TIMESTAMP WITHOUT TIME ZONE"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-7">
-        <createTable tableName="lab_work">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="lab_work_pkey"/>
-            </column>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="moment" type="TIMESTAMP WITHOUT TIME ZONE"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-8">
-        <createTable tableName="person">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="person_pkey"/>
-            </column>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="fias" type="VARCHAR(255)"/>
-            <column name="flat" type="INTEGER"/>
-            <column name="house" type="INTEGER"/>
-            <column name="fio" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-9">
-        <createTable tableName="questions">
-            <column autoIncrement="true" name="id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="questions_pkey"/>
-            </column>
-            <column name="question" type="VARCHAR(255)"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-10">
-        <createTable tableName="results">
-            <column autoIncrement="true" name="id" type="BIGSERIAL">
-                <constraints primaryKey="true" primaryKeyName="results_pkey"/>
-            </column>
-            <column name="estimate" type="INTEGER"/>
-            <column name="id_issuer" type="BIGINT"/>
-            <column name="id_matcher" type="BIGINT"/>
-            <column name="id_work" type="BIGINT"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-11">
-        <createTable tableName="student">
-            <column name="question" type="VARCHAR(255)"/>
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="student_pkey"/>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="salary" type="BIGINT">
+                <constraints nullable="false"/>
             </column>
         </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-12">
-        <createTable tableName="summer_work">
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="summer_work_pkey"/>
-            </column>
-            <column name="description" type="VARCHAR(255)"/>
-            <column name="moment" type="TIMESTAMP WITHOUT TIME ZONE"/>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-13">
-        <createTable tableName="teacher">
-            <column name="answer" type="VARCHAR(255)"/>
-            <column name="id" type="BIGINT">
-                <constraints primaryKey="true" primaryKeyName="teacher_pkey"/>
-            </column>
-        </createTable>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-14">
-        <addForeignKeyConstraint baseColumnNames="id_work" baseTableName="results" constraintName="fk77i5fcwbg7f1qhtcu2peggw4g" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="lab_work" validate="true"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-15">
-        <addForeignKeyConstraint baseColumnNames="id_issuer" baseTableName="results" constraintName="fkitj384u12vbh5nd7eb1omhqfe" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-16">
-        <addForeignKeyConstraint baseColumnNames="id" baseTableName="teacher" constraintName="fklacfustjgxdyi2gqyy0lepx34" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-17">
-        <addForeignKeyConstraint baseColumnNames="id_matcher" baseTableName="results" constraintName="fknvij9uvt0ri9ryknjsppg8hnb" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
-    </changeSet>
-    <changeSet author="Sergey Zhernovoy" id="1528204515956-18">
-        <addForeignKeyConstraint baseColumnNames="id" baseTableName="student" constraintName="fkslayvtom01idjdexcxh76k935" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="person" validate="true"/>
     </changeSet>
 </databaseChangeLog>
