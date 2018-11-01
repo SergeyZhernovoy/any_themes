@@ -8,6 +8,7 @@ import javax.persistence.TypedQuery;
 import java.util.stream.Stream;
 
 public class EmployeeServiceImpl implements EmployeeService {
+
     EntityManager em;
 
     public EmployeeServiceImpl(EntityManager em) {

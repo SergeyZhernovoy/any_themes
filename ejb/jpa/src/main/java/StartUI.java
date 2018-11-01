@@ -10,9 +10,13 @@ public class StartUI {
         EntityManager em = emf.createEntityManager();
         EmployeeService service = new EmployeeServiceImpl(em);
         em.getTransaction().begin();
-        Employee emp = service.create(1, "Sergey", 10000);
+        Employee emp = service.create(2, "Sergey", 10000);
         em.getTransaction().commit();
         System.out.println(emp);
+        em.getTransaction().begin();
+        service.delete(2);
+        em.getTransaction().commit();
         em.close();
+        emf.close();
     }
 }

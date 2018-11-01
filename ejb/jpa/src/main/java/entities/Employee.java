@@ -3,7 +3,7 @@ package entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "Emp")
+@Entity(name = "employeers")
 public class Employee {
     @Id
     private int id;
@@ -37,5 +37,14 @@ public class Employee {
 
     public void setSalary(long salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return new org.apache.commons.lang3.builder.ToStringBuilder(this)
+                .append("id", id)
+                .append("name", name)
+                .append("salary", salary)
+                .toString();
     }
 }
