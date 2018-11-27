@@ -8,7 +8,7 @@ public class StartUI {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("EmployeeService");
         EntityManager em = emf.createEntityManager();
-        EmployeeService service = new EmployeeServiceImpl(em);
+        EmployeeService service = new EmployeeServiceImpl();
         em.getTransaction().begin();
         Employee emp = service.create(2, "Sergey", 10000);
         em.getTransaction().commit();
