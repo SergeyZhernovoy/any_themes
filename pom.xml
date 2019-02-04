@@ -25,6 +25,7 @@
         <module>myBatis</module>
         <module>Database_Liquibase</module>
 	    <module>JavaFX</module>
+        <module>ejb</module>
     </modules>
 
 
