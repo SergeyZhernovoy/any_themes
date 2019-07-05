@@ -21,7 +21,6 @@
         <module>Reflection</module>
         <module>Algorithms</module>
         <module>Lambda</module>
-        <module>Threads</module>
         <module>control_test</module>
         <module>myBatis</module>
         <module>Database_Liquibase</module>
