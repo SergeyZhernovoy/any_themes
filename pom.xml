@@ -21,8 +21,7 @@
         <module>Reflection</module>
         <module>Lambda</module>
         <module>control_test</module>
-        <module>myBatis</module>
-        <module>Database_Liquibase</module>
+	    <module>ejb-edu</module>
     </modules>
 
 
