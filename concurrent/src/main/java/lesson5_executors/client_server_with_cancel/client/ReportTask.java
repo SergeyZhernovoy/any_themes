@@ -1,0 +1,50 @@
+package lesson5_executors.client_server_with_cancel.client;
+
+import lesson5_executors.client_server.util.Constants;
+import lesson5_executors.client_server.wdi.WDI;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.net.Socket;
+import java.util.List;
+import java.util.Random;
+
+public class ReportTask implements Runnable{
+    private List<WDI> data;
+    private String username;
+
+    public ReportTask(List<WDI> data, String username) {
+        this.data=data;
+        this.username=username;
+    }
+
+    @Override
+    public void run() {
+        Random randomGenerator = new Random();
+
+        try (Socket echoSocket = new Socket("localhost",Constants.CONCURRENT_PORT);
+             PrintWriter out = new PrintWriter(echoSocket.getOutputStream(), true);
+             BufferedReader in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
+             BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in))) {
+
+            WDI wdi = data.get(randomGenerator.nextInt(data.size()));
+            StringWriter writer = new StringWriter();
+            writer.write("r");
+            writer.write(";");
+            writer.write(username);
+            writer.write(";");
+            writer.write(String.valueOf(10));
+            writer.write(";");
+            writer.write(wdi.getIndicatorCode());
+
+            String command = writer.toString();
+            out.println(command);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+}

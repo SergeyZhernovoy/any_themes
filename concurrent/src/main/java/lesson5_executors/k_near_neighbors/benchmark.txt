@@ -1,0 +1,24 @@
+Serial Classifier - K: 3
+Success: 1862
+Mistakes: 197
+Execution Time: 57.648 seconds.
+******************************************
+Parallel Classifier Individual - K: 3 - Factor 1 - Parallel Sort: true
+Success: 1789
+Mistakes: 270
+Execution Time: 46.958 seconds.
+******************************************
+Parallel Classifier Individual - K: 3 - Factor 1 - Parallel Sort: false
+Success: 1789
+Mistakes: 270
+Execution Time: 59.437 seconds.
+******************************************
+Parallel Classifier Group - K: 3 - Factor 1 - Parallel Sort: true
+Success: 1789
+Mistakes: 270
+Execution Time: 28.741 seconds.
+******************************************
+Parallel Classifier Group - K: 3 - Factor 1 - Parallel Sort: false
+Success: 1789
+Mistakes: 270
+Execution Time: 40.003 seconds.

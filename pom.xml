@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>any_themes</groupId>
-    <artifactId>myProjects</artifactId>
+    <groupId>ru.education.language</groupId>
+    <artifactId>language</artifactId>
     <version>1.0.1</version>
     <packaging>pom</packaging>
 
@@ -16,12 +16,12 @@
     </properties>
 
     <modules>
-        <module>Spring_Basic</module>
-        <module>Core</module>
-        <module>Reflection</module>
-        <module>Lambda</module>
+        <module>core</module>
+        <module>reflection</module>
+        <module>functional</module>
         <module>control_test</module>
-	    <module>ejb-edu</module>
+	    <module>io_nio</module>
+        <module>concurrent</module>
     </modules>
 
 
