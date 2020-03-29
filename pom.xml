@@ -19,9 +19,10 @@
         <module>core</module>
         <module>reflection</module>
         <module>functional</module>
-        <module>control_test</module>
 	    <module>io_nio</module>
+        <module>control_test</module>
         <module>concurrent</module>
+        <module>javafx</module>
     </modules>
 
 
