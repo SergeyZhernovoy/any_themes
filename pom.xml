@@ -23,6 +23,7 @@
         <module>control_test</module>
         <module>concurrent</module>
         <module>javafx</module>
+        <module>deep_core</module>
     </modules>
 
 
@@ -53,6 +54,14 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.22</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
 </project>
