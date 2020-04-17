@@ -1,15 +1,16 @@
 package ru.bloch.static_fabric;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
 
 /**
- * @author Sergey Zhernovoy
+ * Пример использования фабричных статических методов для создания объектв.
+ * Данный метод обладает преимуществами перед обычными конструкторами
  */
 @Slf4j
 public class User {
@@ -34,8 +35,16 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User user = User.create("Sergey", LocalDate.now());
+        User user = User.create("Sergey", LocalDate.of(1978, 2, 28));
         System.out.println(user);
     }
 
+    @Override
+    public String toString() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+        return "User{" +
+                "name='" + name + '\'' +
+                ", birthDay=" + sdf.format(Date.from(birthDay.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant())) +
+                '}';
+    }
 }
