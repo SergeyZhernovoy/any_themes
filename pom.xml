@@ -24,6 +24,7 @@
         <module>concurrent</module>
         <module>javafx</module>
         <module>deep_core</module>
+        <module>bytecode-explorer</module>
     </modules>
 
 
